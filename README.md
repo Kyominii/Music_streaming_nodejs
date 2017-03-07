@@ -2,4 +2,5 @@
 * Romain KRAFT
 * Ophélien AMSLER
 * Chloé MASONI
+* Alexis BARTHELEMY
 * Teddy VALETTE
