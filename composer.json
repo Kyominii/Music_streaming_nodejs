@@ -1,0 +1,9 @@
+{
+    "name": "root/www",
+    "description": "Projet web Hackathon 2017 par l'equipe \"DUT En Force\" Alias DEF",
+    "type": "project",
+    "require": {
+        "slim/slim": "^3.7",
+        "illuminate/database": "^5.4"
+    }
+}
