@@ -2,15 +2,24 @@
 
 namespace view;
 
+use Slim\Slim;
 
 class VuePrincipale
 {
-    public static function render($content)
+    private $uri,$route;
+
+    public function __construct()
+    {
+        $this->uri   = Slim::getInstance()->request->getRootUri();
+        $this->route = Slim::getInstance()->request->getResourceUri();
+    }
+
+    public function render($content)
     {
         return self::renderHeader()+$content+self::renderFooter();
     }
 
-    private static function renderHeader()
+    private function renderHeader()
     {
         $html = <<<END
 
@@ -18,7 +27,7 @@ END;
         return $html;
     }
 
-    private static function renderFooter()
+    private function renderFooter()
     {
         $html = <<<END
 
