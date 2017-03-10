@@ -42,9 +42,9 @@ app.get('/', function(req, res) {
     for(var i = 0 ; i<musicUpload.length;i++)
     {
         console.log(musicUpload[i]);
-        html+="<div class='item'>"+
+        html+="<div class='item' name='"+musicUpload[i].preview+"'>"+
             "<div class='vignette'>"+
-            "<a href='"+musicUpload[i].preview+"' ><img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/></a>"+
+            "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
             "<div class='info'><div>"+
             "<div>"+musicUpload[i].album+"</div>"+
             "<div>"+musicUpload[i].artist+"</div>"+
