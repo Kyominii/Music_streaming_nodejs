@@ -31,6 +31,7 @@ var checkExist = function(test)
 
 // default options
 app.use(fileUpload());
+app.use('/assets', express.static('include'));
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<audio id="player"></audio>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io-stream/0.9.1/socket.io-stream.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    var socket = io.connect('http://localhost:2000/');
+
+    var audio = document.getElementById('player');
+    ss(socket).on('audio-stream', function(stream, data) {
+        parts = [];
+        stream.on('data', function(chunk){
+            parts.push(chunk);
+        });
+        stream.on('end', function () {
+            audio.src = (window.URL || window.webkitURL).createObjectURL(new Blob(parts));
+            audio.play();
+        });
+    });
+</script>
+
+</body>
+</html>
