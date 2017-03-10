@@ -12,7 +12,7 @@
 <body>
     <div id="titre">
         <div class="margin">
-            <img src="images/logo.png"/>
+            <img src="images/Logo_main.png"/>
         </div>
     </div>
 
@@ -35,12 +35,15 @@
                     <div>CHAT</div>
                 </article>
                 <article id="upload">
-                    <div>UPLOAD</div>
+                    <div id="dropfile">Drop an image from your computer</div>
                 </article>
             </article>
         </div>
 
     </section>
+
+    <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src='index.js'></script>
 
 </body>
 </html>
