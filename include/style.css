@@ -95,3 +95,11 @@ div.vignette > div > div{
     width: 40px;
     margin-top: 80px;
 }
+
+#frame_player{
+    display: none;
+    border: none;
+    margin-top: 1em;
+    height: 40px;
+    width: 100%;
+}
