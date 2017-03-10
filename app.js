@@ -44,7 +44,7 @@ app.get('/', function(req, res) {
         console.log(musicUpload[i]);
         html+="<div class='item'>"+
             "<div class='vignette'>"+
-            "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
+            "<a href='"+musicUpload[i].preview+"' ><img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/></a>"+
             "<div class='info'><div>"+
             "<div>"+musicUpload[i].album+"</div>"+
             "<div>"+musicUpload[i].artist+"</div>"+
@@ -123,7 +123,7 @@ app.post('/', function(req, res) {
                         if(checkExist(temp.name))
                         {
                             var musique  = {
-                                artist : temp.artists.name,
+                                artist : temp.artists[0].name,
                                 album : temp.album.name,
                                 track : temp.name,
                                 preview : temp.preview_url,
