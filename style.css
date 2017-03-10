@@ -1,7 +1,60 @@
-h1{
-    background-color: #909090;
+html{
+    height: 100%;
 }
 
-img{
+body{
+    margin: 0px;
+    background-image: url(images/background.jpg);
+    background-size: cover;
+}
+
+#titre{
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#titre img{
+    height: 60px;
+}
+
+div.margin{
+    max-width: 1000px;
+    margin: auto;
+}
+
+div.vignette{
+    color: white;
+    height: 180px;
+    width: 180px;
+    display: inline-block;
+    margin: 10px;
+    border: solid 1px white;
+}
+
+#playlist{
+    margin-top: 1em;
+    height: 200px;
+    background-color: black;
+    border: solid 1px #595959;
+    border-width: 5px 0px 5px 0px;
+}
+
+#contenu{
+    display: table;
     width: 100%;
+    border-spacing: 1em;
+}
+
+#chat{
+    display: table-cell;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+#upload{
+    display: table-cell;
+    width: 200px;
+    min-height: 300px;
+
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
 }
