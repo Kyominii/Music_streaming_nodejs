@@ -77,27 +77,11 @@ $("#fleche_droite").click(function () {
 
 $("#fleche_gauche").click(function () {
     $('.owl-carousel').trigger('prev.owl.carousel');
-    $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        }
-    );
+
 });
 
 $('.owl-carousel').owlCarousel({
-    loop:false,
+    loop: true,
     margin:10,
     dots: false,
     responsive:{
