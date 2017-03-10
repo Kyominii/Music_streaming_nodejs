@@ -4,6 +4,7 @@ const fs = require('fs');
 const mm = require('musicmetadata');
 const SpotifyWebApi = require('spotify-web-api-node');
 const async = require('async');
+const ejs = require('ejs');
 const app = express();
 
 // credentials are optional
@@ -32,11 +33,19 @@ var checkExist = function(test)
 // default options
 app.use(fileUpload());
 app.use('/assets', express.static('include'));
+app.set('view engine', 'ejs');
+
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {
-    var filePath = __dirname + '/index.html';
-   res.sendFile(filePath);
+    var html = ''
+    for(var i = 0 ; i<musicUpload.length;i++)
+    {
+
+        html+="<div class='item'><div class='vignette'><img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/></div></div>";
+    }
+    console.log(html);
+    res.render('index', { vignettes : html,chat: chat});
 });
 
 app.get('/musics',function (req,res) {
@@ -49,7 +58,7 @@ app.get('/musics',function (req,res) {
 });
 
 
-app.post('/upload', function(req, res) {
+app.post('/', function(req, res) {
     if (!req.files)
         return res.status(400).send('No files were uploaded');
 
@@ -112,6 +121,7 @@ app.post('/upload', function(req, res) {
                             };
                             musicUpload.push(musique);
                         }
+                        res.redirect('/');
                         return res.status(200).send(spotifyMeta.tracks.items[0]);
                     }else{
                         return res.status(200).send('<h1>Metadata incorrect</h1>')

@@ -38,10 +38,6 @@ function upload(files) {
     var f = files[0] ;
 
     // Only process image files.
-    if (!f.type.match('image/jpeg')) {
-        alert("The file must be a jpeg image") ;
-        return false ;
-    }
     var reader = new FileReader();
 
     // When the image is loaded,
