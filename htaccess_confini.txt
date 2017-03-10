@@ -1,0 +1,27 @@
+--- .htaccess ---
+
+<Files ~ "\.(inc|class|sql|ini|conf|exe|dll|bin|tpl|bkp|dat|c|h|py|spd|theme|db|module)$">
+	deny from all
+</Files>
+
+RewriteEngine On
+
+RewriteRule ^sql(/.*|)$ - [NC,F]
+RewriteRule ^src(/.*|)$ - [NC,F]
+RewriteRule ^vendor(/.*|)$ - [NC,F]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+
+-- src/conf/conf.ini
+
+driver='mysql'
+host='localhost'
+database='codeIn24'
+username='root'
+password='root'
+charset='utf8'
+collation='utf8_unicode_ci'
