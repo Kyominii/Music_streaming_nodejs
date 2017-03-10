@@ -41,11 +41,20 @@ app.get('/', function(req, res) {
     var html = ''
     for(var i = 0 ; i<musicUpload.length;i++)
     {
-
-        html+="<div class='item'><div class='vignette'><img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/></div></div>";
+        console.log(musicUpload[i]);
+        html+="<div class='item'>"+
+            "<div class='vignette'>"+
+            "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
+            "<div class='info'><div>"+
+            "<div>"+musicUpload[i].album+"</div>"+
+            "<div>"+musicUpload[i].artist+"</div>"+
+            "<div>"+musicUpload[i].track+"</div>"+
+            "</div>"+
+            "</div>"+
+            "</div></div>";
     }
     console.log(html);
-    res.render('index', { vignettes : html,chat: chat});
+    res.render('index', { vignettes : html});
 });
 
 app.get('/musics',function (req,res) {

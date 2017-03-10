@@ -92,3 +92,12 @@ $('.owl-carousel').owlCarousel({
         }
     }
 });
+
+$(".item").each(function (index, value) {
+    $(value).mouseenter(function () {
+       $(value).find(".info").fadeIn();
+    });
+    $(value).mouseleave(function () {
+        $(value).find(".info").fadeOut();
+    });
+});
