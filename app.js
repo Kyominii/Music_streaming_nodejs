@@ -53,6 +53,7 @@ app.get('/', function(req, res) {
             "</div>"+
             "</div></div>";
     }
+
     console.log(html);
     res.render('index', { vignettes : html});
 });
