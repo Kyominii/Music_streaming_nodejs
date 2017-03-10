@@ -1,0 +1,14 @@
+#messages {
+	border : solid 1px;
+}
+
+.message {
+	border : solid 1px;
+}
+
+#login {
+	width: 100%;
+	z-index: 2;
+	position: absolute;
+	background-color: #444;
+}
