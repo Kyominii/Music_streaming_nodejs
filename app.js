@@ -14,7 +14,6 @@ var spotifyApi = new SpotifyWebApi({
 });
 
 var musicUpload = [];
-
 var spotifyMeta ='';
 var simpleMeta = '';
 
@@ -86,6 +85,7 @@ app.post('/upload', function(req, res) {
                     if(err)throw err;
                     if(spotifyMeta.tracks.items[0] !== undefined) {
                         var temp = spotifyMeta.tracks.items[0];
+                        console.log(temp);
                         if(checkExist(temp.name))
                         {
                             var musique  = {
