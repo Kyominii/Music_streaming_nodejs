@@ -45,9 +45,11 @@ div.vignette{
 
 #chat{
     max-width: 300px;
+    max-height: 300px;
     display: table-cell;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
+    overflow: scroll;
 }
 
 #upload{
@@ -94,4 +96,14 @@ div.vignette > div > div{
 .float_left img, .float_right img{
     width: 40px;
     margin-top: 80px;
+}
+
+.message {
+    border : solid 1px;
+}
+
+#login {
+    z-index: 2;
+    position: absolute;
+    background-color: #444;
 }

@@ -9,46 +9,74 @@
     <title>Music'all</title>
 </head>
 <body>
-<div id="titre">
-    <div class="margin">
-        <img src="assets/images/Logo_main.png"/>
-    </div>
-</div>
-
-
-<section id="main">
-    <article id="playlist">
-        <div class="float_left">
-            <img id="fleche_gauche" src="assets/images/fleche_gauche.png"/>
-        </div>
-        <div class="float_right">
-            <img id="fleche_droite" src="assets/images/fleche_droite.png"/>
-        </div>
+    <div id="titre">
         <div class="margin">
-            <div class="owl-carousel owl-theme">
-                <%- vignettes %>
-            </div>
+            <img src="assets/images/Logo_main.png"/>
         </div>
-</article>
-<div class="margin">
-    <article id="contenu">
-        <article id="chat">
-        </article>
-        <article id="upload">
-            <div id="dropfile">Drop an image from your computer</div>
-            <form method="post" action="../" enctype="multipart/form-data">
-                <input type="file" name="musique" />
-                <input type="submit" value="Envoyer">
-            </form>
-        </article>
-    </article>
-</div>
+    </div>
 
-</section>
 
-<script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
-<script src="assets/caroussel/owl.carousel.min.js"></script>
-<script src='assets/index.js'></script>
+    <section id="main">
+        <article id="playlist">
+            <div class="float_left">
+                <img id="fleche_gauche" src="assets/images/fleche_gauche.png"/>
+            </div>
+            <div class="float_right">
+                <img id="fleche_droite" src="assets/images/fleche_droite.png"/>
+            </div>
+            <div class="margin">
+                <div class="owl-carousel owl-theme">
+                    <%- vignettes %>
+                </div>
+            </div>
+        </article>
+        <div class="margin">
+            <article id="contenu">
+                <article id="chat">
+                    <div id="users">
+                    </div>
+
+                    <div id="messages">
+                        <div class="message" id="msgtpl" >
+                            <div class="info">
+                                <p><strong>{{user.username}}  </strong> <span class="date">{{h}}:{{m}}</span></p>
+                                <p>{{message}}</p>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="login">
+                        <form action="" id="loginform">
+                            <h1>Bienvenue</h1>
+                            <input type="text" name="login" id="username" placeholder="Nom d'utilisateur">
+                            <input type="submit" value="Connection"> 
+                        </form>
+                    </div>
+
+                    <form action="" id="form">
+                        <input type="text" id="message" class="text"/>
+                        <input type="submit" id="send" value="Envoyer" class="submit" />
+                    </form>
+                </article>
+                <article id="upload">
+                    <div id="dropfile">Drop an image from your computer</div>
+                    <form method="post" action="../" enctype="multipart/form-data">
+                        <input type="file" name="musique" />
+                        <input type="submit" value="Envoyer">
+                    </form>
+                </article>
+            </article>
+        </div>
+
+    </section>
+
+    <script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script src="assets/caroussel/owl.carousel.min.js"></script>
+    <script src='assets/index.js'></script>
+    <script src="http://localhost:3003/socket.io/socket.io.js"></script>
+    <script src="assets/client.js"></script>
+    <script src="assets/mustache.js"></script>
 
 </body>
 </html>
