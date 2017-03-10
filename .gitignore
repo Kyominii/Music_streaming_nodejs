@@ -3,3 +3,5 @@
 **/composer.lock
 **/conf.ini
 **/.htaccess
+**/*.mp3
+**/node_modules
