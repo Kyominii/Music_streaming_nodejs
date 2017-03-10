@@ -1,4 +1,4 @@
-$(document).on('dragenter', '#dropfile', function() {
+/*$(document).on('dragenter', '#dropfile', function() {
     $(this).css('color', 'red');
     return false;
 });
@@ -55,7 +55,7 @@ function handleReaderLoad(evt) {
     var pic = {};
     pic.file = evt.target.result.split(',')[1];
 
-    var str = jQuery.param(pic);
+    var str = jQuery.param(pic);*/
 /*
     $.ajax({
         type: 'POST',
@@ -68,7 +68,7 @@ function handleReaderLoad(evt) {
                 alert("non") ;
             }
     });*/
-
+/*
     var pr = $.ajax("../",{
         type : "POST",
         context : this,
@@ -77,7 +77,18 @@ function handleReaderLoad(evt) {
     pr.done(function(jqXHR, status, error){alert(0);});
     pr.fail(function(jqXHR, status, error){alert( "error loading data : "+ error);});
 }
-
+*/
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
 
 $("#fleche_droite").click(function () {
     $('.owl-carousel').trigger('next.owl.carousel');
