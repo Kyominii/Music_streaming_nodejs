@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link rel='stylesheet' href='assets/style.css'/>
+    <link rel="stylesheet" href="assets/caroussel/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/caroussel/owl.theme.default.min.css">
+    <title>Music'all</title>
+</head>
+<body>
+<div id="titre">
+    <div class="margin">
+        <img src="assets/images/Logo_main.png"/>
+    </div>
+</div>
+
+
+<section id="main">
+    <article id="playlist">
+        <div class="float_left">
+            <img id="fleche_gauche" src="assets/images/fleche_gauche.png"/>
+        </div>
+        <div class="float_right">
+            <img id="fleche_droite" src="assets/images/fleche_droite.png"/>
+        </div>
+        <div class="margin">
+            <div class="owl-carousel owl-theme">
+                <%- vignettes %>
+            </div>
+        </div>
+</article>
+<div class="margin">
+    <article id="contenu">
+        <article id="chat">
+
+        </article>
+        <article id="upload">
+            <div id="dropfile">Drop an image from your computer</div>
+            <form method="post" action="../upload" enctype="multipart/form-data">
+                <input type="file" name="musique" />
+                <input type="submit" value="Envoyer">
+            </form>
+        </article>
+    </article>
+</div>
+
+</section>
+
+<script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script src="assets/caroussel/owl.carousel.min.js"></script>
+<script src='assets/index.js'></script>
+
+</body>
+</html>
