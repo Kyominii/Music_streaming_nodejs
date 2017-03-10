@@ -118,7 +118,8 @@ $(".item").each(function (index, value) {
     $(value).mouseenter(function () {
        $(value).find(".info").stop().fadeIn(200);
         $(value).find(".info").click(function () {
-            window.location.href = $(value).attr("name");
+            $("#frame_player").attr("src",$(value).attr("name"));
+            $("#frame_player").fadeIn();
         });
     });
     $(value).mouseleave(function () {
