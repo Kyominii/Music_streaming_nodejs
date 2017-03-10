@@ -121,6 +121,7 @@ app.post('/', function(req, res) {
                             };
                             musicUpload.push(musique);
                         }
+                        res.redirect('/');
                         return res.status(200).send(spotifyMeta.tracks.items[0]);
                     }else{
                         return res.status(200).send('<h1>Metadata incorrect</h1>')
