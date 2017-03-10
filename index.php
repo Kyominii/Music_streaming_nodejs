@@ -19,7 +19,7 @@
     <section id="main">
         <article id="playlist">
                 <div class="float_left">
-                    <img id="fleche_gauche" src="images/fleche_droite.png"/>
+                    <img id="fleche_gauche" src="images/fleche_gauche.png"/>
                 </div>
             <div class="float_right">
                 <img id="fleche_droite" src="images/fleche_droite.png"/>
@@ -29,6 +29,11 @@
                     <div class="item">
                         <div class="vignette">
                             <img src="IMG_DATA" alt="IMG_TITRE 1"/>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="vignette">
+                            <img src="IMG_DATA" alt="IMG_TITRE 2"/>
                         </div>
                     </div>
                 </div>

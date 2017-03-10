@@ -71,8 +71,12 @@ function handleReaderLoad(evt) {
     });
 }
 
-$("#chat").click(function () {
+$("#fleche_droite").click(function () {
     $('.owl-carousel').trigger('next.owl.carousel');
+});
+
+$("#fleche_gauche").click(function () {
+    $('.owl-carousel').trigger('prev.owl.carousel');
 });
 
 $('.owl-carousel').owlCarousel({

@@ -4,7 +4,7 @@ html{
 
 body{
     margin: 0px;
-    background-image: url(images/background.jpg);
+    background-image: url(images/Bakcground-test.jpg);
     background-size: cover;
 }
 
@@ -67,12 +67,15 @@ div.vignette{
 
 .float_right{
     float: right;
+    padding-right: 1em;
 }
 
 .float_left{
     float: left;
+    padding-left: 1em;
 }
 
 .float_left img, .float_right img{
-    width: 130px;
+    width: 80px;
+    margin-top: 60px;
 }
