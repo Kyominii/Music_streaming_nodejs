@@ -117,12 +117,12 @@ app.post('/', function(req, res) {
                                 album : temp.album.name,
                                 track : temp.name,
                                 preview : temp.preview_url,
-                                cover : spotifyMeta.cover
+                                cover : spotifyMeta.cover,
+                                path: uploadPath
                             };
                             musicUpload.push(musique);
                         }
                         res.redirect('/');
-                        return res.status(200).send(spotifyMeta.tracks.items[0]);
                     }else{
                         return res.status(200).send('<h1>Metadata incorrect</h1>')
                     }
