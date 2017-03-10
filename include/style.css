@@ -59,6 +59,23 @@ div.vignette{
     color: white;
 }
 
+div.vignette > div{
+    display: none;
+    position: absolute;
+    top: 11px;
+    height: 180px;
+    width: 180px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+div.vignette > div > div{
+    color: white;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    margin-left: 5px;
+}
+
 #dropfile{
     height: 300px;
     text-align: center;
@@ -66,15 +83,15 @@ div.vignette{
 
 .float_right{
     float: right;
-    padding-right: 1em;
+    padding-right: 2em;
 }
 
 .float_left{
     float: left;
-    padding-left: 1em;
+    padding-left: 2em;
 }
 
 .float_left img, .float_right img{
-    width: 80px;
-    margin-top: 60px;
+    width: 40px;
+    margin-top: 80px;
 }
