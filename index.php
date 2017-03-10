@@ -6,35 +6,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <link rel='stylesheet' href='test.css'/>
+    <link rel='stylesheet' href='style.css'/>
     <title>Music'all</title>
 </head>
 <body>
-<!-- Titre - Menu -->
-<section id="titre">
-    <h1>Music'all</h1>
-    <nav>
-        <ul id="menu">
-            <li class="menu"><p class="sub">Accueil</p>
-            </li>
-            <li class="menu"><p class="sub">Joueur</p>
-                <ul>
-                    <li><a href="#">Créer salle</a></li>
-                    <li><a href="#">Rejoindre salle</a></li>
-                </ul>
-            </li>
-            <li class="menu"><p class="sub">Mon compte</p></li>
-        </ul>
-    </nav>
-</section>
-<section>
-   <div id="img_accueil">
-       <div>Bienvenu sur Music'All !</div>
-       <div>Découvrez notre plate forme de partage de musique en ligne</div>
-   </div>
+    <div id="titre">
+        <div class="margin">
+            <img src="images/logo.png"/>
+        </div>
+    </div>
 
-</section>
-<script src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
-<script src='test.js'></script>
+    <section id="main">
+        <article id="playlist">
+            <div class="margin">
+            <div class="vignette">
+                <img src="IMG_DATA" alt="IMG_TITRE"/>
+            </div>
+            <!--
+            <div class="vignette">
+                <img src="IMG_DATA" alt="IMG_TITRE"/>
+            </div>
+            -->
+            </div>
+        </article>
+        <div class="margin">
+            <article id="contenu">
+                <article id="chat">
+                    <div>CHAT</div>
+                </article>
+                <article id="upload">
+                    <div>UPLOAD</div>
+                </article>
+            </article>
+        </div>
+
+    </section>
+
 </body>
 </html>
