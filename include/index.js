@@ -78,12 +78,10 @@ $("#fleche_droite").click(function () {
 $("#fleche_gauche").click(function () {
     $('.owl-carousel').trigger('prev.owl.carousel');
 
-    $('.owl-carousel').trigger('loop: false');
-
 });
 
 $('.owl-carousel').owlCarousel({
-    loop: true,
+    loop: false,
     margin:10,
     dots: false,
     responsive:{

@@ -9,7 +9,6 @@ body{
 }
 
 #titre{
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #titre img{
@@ -33,8 +32,8 @@ div.vignette{
 #playlist{
     margin-top: 1em;
     height: 200px;
-    background-color: black;
-    border: solid 1px #595959;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: solid 1px rgba(125, 125, 125, 0.5);
     border-width: 5px 0px 5px 0px;
 }
 
@@ -56,7 +55,7 @@ div.vignette{
     width: 200px;
     min-height: 300px;
 
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
 }
 
