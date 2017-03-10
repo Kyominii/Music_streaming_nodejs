@@ -58,7 +58,7 @@ app.get('/musics',function (req,res) {
 });
 
 
-app.post('/upload', function(req, res) {
+app.post('/', function(req, res) {
     if (!req.files)
         return res.status(400).send('No files were uploaded');
 
