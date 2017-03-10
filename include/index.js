@@ -67,6 +67,7 @@ function handleReaderLoad(evt) {
     });
 }
 
+
 $("#fleche_droite").click(function () {
     $('.owl-carousel').trigger('next.owl.carousel');
 });
@@ -75,6 +76,26 @@ $("#fleche_gauche").click(function () {
     $('.owl-carousel').trigger('prev.owl.carousel');
 
 });
+
+var nbItems = document.getElementsByClassName("item").length;
+if($(window).width() >= 600){
+    if($(window).width() >= 100){
+        if(nbItems <= 5){
+            $("#fleche_droite").fadeOut(0);
+            $("#fleche_gauche").fadeOut(0);
+        }
+    }else{
+        if(nbItems <= 3){
+            $("#fleche_droite").fadeOut(0);
+            $("#fleche_gauche").fadeOut(0);
+        }
+    }
+}else{
+    if(nbItems <= 1){
+        $("#fleche_droite").fadeOut(0);
+        $("#fleche_gauche").fadeOut(0);
+    }
+}
 
 $('.owl-carousel').owlCarousel({
     loop: false,
@@ -95,9 +116,13 @@ $('.owl-carousel').owlCarousel({
 
 $(".item").each(function (index, value) {
     $(value).mouseenter(function () {
-       $(value).find(".info").fadeIn();
+       $(value).find(".info").stop().fadeIn(200);
+        $(value).find(".info").click(function () {
+            $("#frame_player").attr("src",$(value).attr("name"));
+            $("#frame_player").fadeIn();
+        });
     });
     $(value).mouseleave(function () {
-        $(value).find(".info").fadeOut();
+        $(value).find(".info").stop().fadeOut(200);
     });
 });

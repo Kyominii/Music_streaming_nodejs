@@ -15,6 +15,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
 
     <section id="main">
         <article id="playlist">
@@ -29,6 +30,35 @@
                     <%- vignettes %>
                 </div>
             </div>
+=======
+<section id="main">
+    <article id="playlist">
+        <div class="float_left">
+            <img id="fleche_gauche" src="assets/images/fleche_gauche.png"/>
+        </div>
+        <div class="float_right">
+            <img id="fleche_droite" src="assets/images/fleche_droite.png"/>
+        </div>
+        <div class="margin">
+            <div class="owl-carousel owl-theme">
+                <%- vignettes %>
+            </div>
+        </div>
+</article>
+<div class="margin">
+<section id="player">
+    <iframe id="frame_player" src=""></iframe>
+</section>
+    <article id="contenu">
+        <article id="chat">
+        </article>
+        <article id="upload">
+            <div id="dropfile">Glissez une musique pour l'envoyer</div>
+            <form method="post" action="../" enctype="multipart/form-data">
+                <input type="file" name="musique" />
+                <input type="submit" value="Envoyer">
+            </form>
+>>>>>>> 5318c6a38c3e448d4db4bd42a7cafbc2c8c8705d
         </article>
         <div class="margin">
             <article id="contenu">

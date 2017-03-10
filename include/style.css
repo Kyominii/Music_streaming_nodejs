@@ -98,6 +98,7 @@ div.vignette > div > div{
     margin-top: 80px;
 }
 
+
 .message {
     border : solid 1px;
 }
@@ -106,4 +107,12 @@ div.vignette > div > div{
     z-index: 2;
     position: absolute;
     background-color: #444;
+}
+
+#frame_player{
+    display: none;
+    border: none;
+    margin-top: 1em;
+    height: 40px;
+    width: 100%;
 }

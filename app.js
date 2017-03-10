@@ -28,7 +28,7 @@ var checkExist = function(test)
         }
     }
     return true;
-}
+};
 
 // default options
 app.use(fileUpload());
@@ -42,7 +42,7 @@ app.get('/', function(req, res) {
     for(var i = 0 ; i<musicUpload.length;i++)
     {
         console.log(musicUpload[i]);
-        html+="<div class='item'>"+
+        html+="<div class='item' name='"+musicUpload[i].preview+"'>"+
             "<div class='vignette'>"+
             "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
             "<div class='info'><div>"+
@@ -53,8 +53,13 @@ app.get('/', function(req, res) {
             "</div>"+
             "</div></div>";
     }
+
     console.log(html);
     res.render('index', { vignettes : html});
+});
+
+app.get('/stream', function(req, res){
+    res.sendFile(__dirname + '/test2.html');
 });
 
 app.get('/musics',function (req,res) {
@@ -122,16 +127,16 @@ app.post('/', function(req, res) {
                         if(checkExist(temp.name))
                         {
                             var musique  = {
-                                artist : temp.artists.name,
+                                artist : temp.artists[0].name,
                                 album : temp.album.name,
                                 track : temp.name,
                                 preview : temp.preview_url,
-                                cover : spotifyMeta.cover
+                                cover : spotifyMeta.cover,
+                                path: uploadPath
                             };
                             musicUpload.push(musique);
                         }
                         res.redirect('/');
-                        return res.status(200).send(spotifyMeta.tracks.items[0]);
                     }else{
                         return res.status(200).send('<h1>Metadata incorrect</h1>')
                     }
