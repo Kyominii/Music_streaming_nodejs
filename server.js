@@ -1,4 +1,4 @@
-var icecast = require("icecast"), // I'll talk about this module later
+ar icecast = require("icecast"), // I'll talk about this module later
     lame = require("lame");
 
 var encoder = lame.Encoder({channels: 2, bitDepth: 16, sampleRate: 44100});
