@@ -28,7 +28,7 @@ var checkExist = function(test)
         }
     }
     return true;
-}
+};
 
 // default options
 app.use(fileUpload());
@@ -56,6 +56,10 @@ app.get('/', function(req, res) {
 
     console.log(html);
     res.render('index', { vignettes : html});
+});
+
+app.get('/stream', function(req, res){
+    res.sendFile(__dirname + '/test2.html');
 });
 
 app.get('/musics',function (req,res) {
