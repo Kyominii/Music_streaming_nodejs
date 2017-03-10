@@ -42,7 +42,7 @@ app.get('/musics',function (req,res) {
     var html ='';
     for(var i=0; i<musicUpload.length;i++)
     {
-        html+='<a href="'+musicUpload[i].preview+'">Preview</a><p>'+musicUpload[i].track+'</p>';
+        html+='<img src="'+musicUpload[i].cover+'" alt="'+musicUpload[i].track+'"><a href="'+musicUpload[i].preview+'">Preview</a><p>'+musicUpload[i].track+'</p>';
     }
     return res.status(200).send(html);
 });
@@ -70,11 +70,26 @@ app.post('/upload', function(req, res) {
                     //On doit passer en synchrone
                     var parser = mm(fs.createReadStream(uploadPath), function (err, metadata) {
                         if (err) throw err;
+
                         simpleMeta = metadata;
+
+
                         spotifyApi.searchTracks('track:'+metadata.title+' artist:'+metadata.artist)
                             .then(function(data) {
                                 spotifyMeta = data.body;
-                                callback();
+                                console.log(data.body.tracks.items[0].album.id);
+                                if(data.body.tracks.items[0]!==undefined) {
+                                    spotifyApi.getAlbums([data.body.tracks.items[0].album.id]).then(function (data) {
+                                        console.log(data.body.albums[0].images[0].url);
+                                        spotifyMeta.cover = data.body.albums[0].images[0].url;
+                                        callback();
+                                    }, function (err) {
+                                        console.log('Something went wrong!', err);
+                                        callback();
+                                    });
+                                }else {
+                                    callback();
+                                }
                             }, function(err) {
                                 console.log('Something went wrong!', err);
                                 callback();
@@ -85,14 +100,14 @@ app.post('/upload', function(req, res) {
                     if(err)throw err;
                     if(spotifyMeta.tracks.items[0] !== undefined) {
                         var temp = spotifyMeta.tracks.items[0];
-                        console.log(temp);
                         if(checkExist(temp.name))
                         {
                             var musique  = {
                                 artist : temp.artists.name,
                                 album : temp.album.name,
                                 track : temp.name,
-                                preview : temp.preview_url
+                                preview : temp.preview_url,
+                                cover : spotifyMeta.cover
                             };
                             musicUpload.push(musique);
                         }
@@ -105,7 +120,7 @@ app.post('/upload', function(req, res) {
             }
     });
     }else{
-        return res.status(500).send('<h1>Format Incorrect</h1>');
+        return res.status(500).send('<h1>Format Incorrect </h1>');
     }
 });
 
