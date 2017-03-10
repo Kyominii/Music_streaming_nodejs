@@ -35,7 +35,7 @@ app.use('/assets', express.static('include'));
 
 // respond with "hello world" when a GET request is made to the homepage
 app.get('/', function(req, res) {
-    var filePath = __dirname + '/public/index.html';
+    var filePath = __dirname + '/index.html';
    res.sendFile(filePath);
 });
 
