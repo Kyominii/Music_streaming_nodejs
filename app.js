@@ -13,8 +13,22 @@ var spotifyApi = new SpotifyWebApi({
     redirectUri : 'http://localhost/callback'
 });
 
+var musicUpload = [];
+
 var spotifyMeta ='';
 var simpleMeta = '';
+
+var checkExist = function(test)
+{
+    for(var i=0;i<musicUpload.length;i++)
+    {
+        if(musicUpload[i].track == test)
+        {
+            return false;
+        }
+    }
+    return true;
+}
 
 // default options
 app.use(fileUpload());
@@ -23,6 +37,15 @@ app.use(fileUpload());
 app.get('/', function(req, res) {
     var filePath = __dirname + '/public/index.html';
    res.sendFile(filePath);
+});
+
+app.get('/musics',function (req,res) {
+    var html ='';
+    for(var i=0; i<musicUpload.length;i++)
+    {
+        html+='<a href="'+musicUpload[i].preview+'">Preview</a><p>'+musicUpload[i].track+'</p>';
+    }
+    return res.status(200).send(html);
 });
 
 
@@ -51,7 +74,6 @@ app.post('/upload', function(req, res) {
                         simpleMeta = metadata;
                         spotifyApi.searchTracks('track:'+metadata.title+' artist:'+metadata.artist)
                             .then(function(data) {
-                                console.log(data.body);
                                 spotifyMeta = data.body;
                                 callback();
                             }, function(err) {
@@ -63,9 +85,20 @@ app.post('/upload', function(req, res) {
                 async.parallel(calls,function (err,result) {
                     if(err)throw err;
                     if(spotifyMeta.tracks.items[0] !== undefined) {
+                        var temp = spotifyMeta.tracks.items[0];
+                        if(checkExist(temp.name))
+                        {
+                            var musique  = {
+                                artist : temp.artists.name,
+                                album : temp.album.name,
+                                track : temp.name,
+                                preview : temp.preview_url
+                            };
+                            musicUpload.push(musique);
+                        }
                         return res.status(200).send(spotifyMeta.tracks.items[0]);
                     }else{
-                        return res.status(200).send(simpleMeta);
+                        return res.status(200).send('<h1>Metadata incorrect</h1>')
                     }
                 });
 
