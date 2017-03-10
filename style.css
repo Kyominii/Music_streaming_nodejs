@@ -45,6 +45,7 @@ div.vignette{
 }
 
 #chat{
+    max-width: 300px;
     display: table-cell;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
@@ -62,4 +63,16 @@ div.vignette{
 #dropfile{
     height: 300px;
     text-align: center;
+}
+
+.float_right{
+    float: right;
+}
+
+.float_left{
+    float: left;
+}
+
+.float_left img, .float_right img{
+    width: 130px;
 }
