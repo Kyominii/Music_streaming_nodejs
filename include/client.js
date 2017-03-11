@@ -31,7 +31,10 @@
 	//vote music suivante 
 	$('#voteMusic').submit(function (event) {
 		event.preventDefault();
-		if (!vote) {socket.emit('votage');};
+		if (!vote) {
+			vote = !vote;
+			socket.emit('votage');
+		};
 		
 	});
 
