@@ -19,7 +19,7 @@ var spotifyApi = new SpotifyWebApi({
 fs.writeFile('/home/hackathon/playlist.m3u', '', function(){
 });
 
-io = io.listen(app.listen(2000));
+io = io.listen(app.listen(25568));
 
 var musicUpload = [];
 var spotifyMeta ='';
