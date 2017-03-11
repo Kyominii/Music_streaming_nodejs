@@ -152,7 +152,12 @@ app.post('/', function(req, res) {
 
                             var callbacks = [];
 
-                            fs.writeFileSync('/home/hackathon/playlist.m3u', '');
+                            callbacks.push(function(callback){
+                                fs.writeFile('/home/hackathon/playlist.m3u', '', function(){
+                                    callback();
+                                });
+                            });
+
                             callbacks.push(function(callback) {
                                 musicUpload.forEach(function (musicData) {
                                     fs.appendFile('/home/hackathon/playlist.m3u', musicData.path + "\n");
