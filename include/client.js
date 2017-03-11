@@ -56,7 +56,7 @@
 
 		var item = $("<div>").addClass("item").attr("name",user.preview).append(
 			$("<div>").addClass("vignette").append(
-				$("<img src='"+user.cover+"' data='"+user.path+" alt='"+user.track+"'>")
+				$("<img src='"+user.cover+"' data='"+user.path+"' alt='"+user.track+"'>")
 			).append(
 				$("<div>").addClass("info").append(
 					$("<img>").attr("src", "assets/images/play_button_preview.png").attr("alt", "preview").addClass("preview")
