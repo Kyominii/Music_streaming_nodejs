@@ -12,14 +12,6 @@ var internetradio = require('node-internet-radio');
 
 
 
-var testStream = "http://voxystudio.com:25567/stream";
-setInterval(function() {
-    internetradio.getStationInfo(testStream, function(error, station) {
-        console.log(station);
-    });
-}, 5000);
-
-
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
     clientId : '1b25b20eb6644b7f84861a486146b68a',
@@ -86,7 +78,7 @@ app.get('/musics',function (req,res) {
     var html ='';
     for(var i=0; i<musicUpload.length;i++)
     {
-        html+='<img src="'+musicUpload[i].cover+'" alt="'+musicUpload[i].track+'"><a href="'+musicUpload[i].preview+'">Preview</a><p>'+musicUpload[i].track+'</p>';
+        html+='<img src="'+musicUpload[i].cover+'" data="'+musicUpload[i].path+'" alt="'+musicUpload[i].track+'"><a href="'+musicUpload[i].preview+'">Preview</a><p>'+musicUpload[i].track+'</p>';
     }
     return res.status(200).send(html);
 });
@@ -194,7 +186,8 @@ app.post('/', function(req, res) {
     }
 });
 
-
+var oldVignette ='';
+var oldPath = '';
 var users = {};
 var messages = [];
 var history = 20;
@@ -242,3 +235,24 @@ io.sockets.on('connection', function (socket) {
     })
 
 });
+var actualiserMusiqueCourante = function(nom)
+{
+    for(var i=0; i<musicUpload.length;i++ )
+    {
+        if(musicUpload[i].path.replace(__dirname,'') === nom)
+            return musicUpload[i].path;
+    }
+
+    return null;
+}
+
+var testStream = "http://voxystudio.com:25567/stream";
+setInterval(function() {
+    internetradio.getStationInfo(testStream, function(error, station) {
+    var path = actualiserMusiqueCourante(station.title);
+    if(path!==oldPath) {
+
+        io.socket.emit("newPlayingSong", path);
+    }
+    });
+}, 5000);

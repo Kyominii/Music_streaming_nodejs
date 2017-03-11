@@ -160,3 +160,7 @@ img.preview{
     left: 0px;
     opacity: 0.1;
 }
+
+.bordered{
+    border: solid red 3px;
+}

@@ -60,7 +60,7 @@
                         <form action="" id="loginform">
                             <h1>Bienvenue</h1>
                             <input type="text" name="login" id="username" placeholder="Nom d'utilisateur">
-                            <input type="submit" value="Connection"> 
+                            <input type="submit" value="Connection">
                         </form>
                     </div>
 
@@ -94,6 +94,11 @@
     <script src="assets/mustache.js"></script>
     <script>
         var socket = io.connect('http://voxystudio.com:25568');
+
+        socket.on("newPlayingSong", function (data){
+            $(".bordered").toggleClass("bordered");
+            $(".vignette").find("[data='" + path + "']").toggleClass("bordered");
+        });
     </script>
 
 </body>
