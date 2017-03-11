@@ -137,6 +137,15 @@ app.post('/', function(req, res) {
                                 path: uploadPath
                             };
                             musicUpload.push(musique);
+
+                            var sys = require('sys')
+                            var exec = require('child_process').exec;
+                            var pid;
+                            function puts(error, stdout, stderr) { sys.puts(stdout); console.log(stdout); exec("kill -1 " + pid, puts3); }
+                            function puts2(error, stdout, stderr) { pid = stdout; console.log(pid); }
+                            function puts3(error, stdout, stderr) { sys.puts(stdout); console.log(stdout); }
+                            exec("find /home/hackathon/www/uploads/ -name *.mp3 > /home/hackathon/playlist.m3u", puts3);
+                            exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
                         }
                         res.redirect('/');
                     }else{
