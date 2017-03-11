@@ -34,9 +34,12 @@ $(document).on('drop', '#dropfile', function(e) {
     return false;
 });
 
+var file;
+
 function upload(files) {
     var f = files[0] ;
 
+    file = f;
     // Only process image files.
     var reader = new FileReader();
 
@@ -53,10 +56,10 @@ function handleReaderLoad(evt) {
     pic.file = evt.target.result.split(',')[1];
 
     var str = jQuery.param(pic);
-
+/*
     $.ajax({
         type: 'POST',
-        url: "SCRIPT TRAITEMENT",
+        url: "../upload",
         data: str,
             success: function(data) {
                 alert("ok") ;
@@ -64,7 +67,15 @@ function handleReaderLoad(evt) {
             fail : function (data) {
                 alert("non") ;
             }
+    });*/
+
+    var pr = $.ajax("../",{
+        type : "POST",
+        context : this,
+        data : str
     });
+    pr.done(function(jqXHR, status, error){alert(0);});
+    pr.fail(function(jqXHR, status, error){alert( "error loading data : "+ error);});
 }
 
 
