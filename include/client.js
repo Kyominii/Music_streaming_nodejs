@@ -37,15 +37,20 @@
 		$('#votation').text("Nb vote : "+nbVote);
 	});
 
+	var nbUser = 0;
+
 	//gestion des connection
 	socket.on('newuser', function (user) {
+		nbUser++;
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
-		$("#nb_users").text("Nombre d'utilisateurs : ");
+		$("#nb_users").text("Nombre d'utilisateurs : "+nbUser);
 	});
 
 	//gestion des deconnections
 	socket.on('discuser', function (user) {
+		nbUser--;
 		$('#user_' + user.id).remove();
+		$("#nb_users").text("Nombre d'utilisateurs : "+nbUser);
 	});
 
     //gestion des deconnections
