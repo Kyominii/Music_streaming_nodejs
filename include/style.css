@@ -187,9 +187,7 @@
         opacity: 0.1;
     }
 
-    .bordered {
-        border: solid 50px red;
-    }
+
 
     #vote {
         color: black;
@@ -245,5 +243,9 @@
         display: block;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .bordered {
+        border: solid 50px red;
     }
 }
