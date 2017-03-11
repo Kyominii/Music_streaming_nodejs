@@ -39,7 +39,7 @@
 	});
 
 	socket.on('vote', function (nbVote) {
-		$('#votation').text("Nb vote : "+nbVote);
+		$('#votation').text("Nombre de votes pour passer : "+nbVote);
 	});
 
 	socket.on('voteOver', function (nbVote) {
