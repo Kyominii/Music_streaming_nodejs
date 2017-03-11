@@ -1,6 +1,6 @@
 (function () {
 
-	var socket = io.connect("http://localhost:2000");
+	var socket = io.connect("http://voxystudio.com:25568");
 	var msgtpl = $('#msgtpl').html();
 	$('#msgtpl').remove();
 
