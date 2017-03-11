@@ -67,6 +67,17 @@
 				)
 			)
 		);
+
+		$(item).mouseenter(function () {
+			$(item).find(".info").stop().fadeIn(200);
+			$(item).find(".info").click(function () {
+				$("#frame_player").attr("src",$(item).attr("name"));
+				$("#frame_player").fadeIn();
+			});
+		});
+		$(item).mouseleave(function () {
+			$(item).find(".info").stop().fadeOut(200);
+		});
         $('.owl-carousel')
             .owlCarousel('add', item)
             .owlCarousel('update')
