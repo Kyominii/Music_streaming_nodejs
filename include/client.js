@@ -120,7 +120,8 @@
     socket.on('newPlayingSong', function (data){
     	console.log(data);
     	$(".vignette").removeClass("bordered");
-        $(".vignette:nth-child("+data+")").addClass("bordered");
+        var p = $(".vignette:eq("+data+")").addClass("bordered");
+        console.log(p);
     });
 
 })();
