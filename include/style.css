@@ -25,7 +25,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #titre img{
-    height: 60px;
+    height: 100px;
 }
 
 div.margin{
@@ -43,7 +43,6 @@ div.vignette{
 }
 
 #playlist{
-    margin-top: 1em;
     height: 200px;
     background-color: rgba(0, 0, 0, 0.7);
     border: solid 1px rgba(125, 125, 125, 0.5);
