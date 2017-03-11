@@ -1,13 +1,17 @@
 function makeDroppable(element, callback) {
 
-    var input = document.createElement('input');
+    var input = document.getElementById('input_musique');
     input.setAttribute('type', 'file');
     input.setAttribute('multiple', true);
     input.style.display = 'none';
 
     element.appendChild(input);
 
-
+    element.addEventListener('change', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        triggerCallback(e);
+    });
 
     element.addEventListener('dragover', function(e) {
         e.preventDefault();
@@ -27,11 +31,17 @@ function makeDroppable(element, callback) {
         element.classList.remove('dragover');
         triggerCallback(e);
     });
-/*
+    element.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.remove('dragover');
+        triggerCallback(e);
+    });
+
     element.addEventListener('click', function() {
         input.value = null;
         input.click();
-    });*/
+    });
 
     function triggerCallback(e) {
         var files;
@@ -46,6 +56,8 @@ function makeDroppable(element, callback) {
 
 var element = document.querySelector('#upload');
 function callback(files) {
+    $("#dropfile").text("Envoi de la musique en cours");
+    $("#dropfile_img").attr("src","assets/images/icon_upload.png");
     // Here, we simply log the Array of files to the console.
     console.log(files[0]);
     var formData = new FormData();
@@ -131,8 +143,6 @@ function envoiFail(reponse) {
 }
 
 function readfiles(files) {
-    $("#dropfile").text("Envoi de la musique en cours");
-    $("#dropfile_img").attr("src","assets/images/icon_upload.png");
     for (var i = 0; i < files.length; i++) {
 
         reader = new FileReader();
@@ -144,8 +154,4 @@ var holder = document.getElementById('upload');
 holder.ondrop = function (e) {
     e.preventDefault();
     readfiles(e.dataTransfer.files);
-};
-holder.onchange = function (e, data) {
-    e.preventDefault();
-    readfiles(data.files);
 };
