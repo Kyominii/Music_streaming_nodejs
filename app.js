@@ -248,6 +248,8 @@ var actualiserMusiqueCourante = function(nom)
 {
     for(var i=0; i<musicUpload.length;i++ )
     {
+        console.log(nom);
+        console.log(musicUpload[i].path.replace(__dirname,''));
         if(musicUpload[i].path.replace(__dirname,'') === nom)
             return i;
     }
