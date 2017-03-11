@@ -148,7 +148,6 @@ app.post('/', function(req, res) {
                             };
                             musicUpload.push(musique);
                             io.sockets.emit('newMusic',musique);
-                            console.log(simpleMeta);
 
                             var sys = require('sys')
                             var exec = require('child_process').exec;
@@ -253,20 +252,18 @@ var actualiserMusiqueCourante = function(nom)
 {
     for(var i=0; i<musicUpload.length;i++ )
     {
-        console.log(nom);
-        var path = musicUpload[i].path;
-        console.log(path);
-        if(path.replace(__dirname,'') === nom)
+        var track = musicUpload[i].track;
+        if(nom.contains(track))
             return i;
     }
 
     return null;
-}
+};
 
 var testStream = "http://voxystudio.com:25567/stream";
 setInterval(function() {
     internetradio.getStationInfo(testStream, function(error, station) {
-    var path = actualiserMusiqueCourante(station.title);
+    var path = actualiserMusiqueCourante(station);
     io.sockets.emit("newPlayingSong",path );
     });
 }, 5000);
