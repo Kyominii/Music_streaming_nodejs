@@ -31,8 +31,15 @@
             <div class="owl-carousel owl-theme">
                 <%- vignettes %>
             </div>
-        </div>
-</article>
+            <div class="float_right">
+                <img id="fleche_droite" src="assets/images/fleche_droite.png"/>
+            </div>
+            <div class="margin">
+                <div class="owl-carousel owl-theme">
+                    <%- vignettes %>
+                </div>
+            </div>
+        </article>
         <div class="margin">
             <article>
             <iframe id="frame_player"></iframe>
@@ -47,7 +54,7 @@
                             <div class="info">
                                 <p><strong>{{user.username}}  </strong> <span class="date">{{h}}:{{m}}</span></p>
                                 <p>{{message}}</p>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -60,11 +67,14 @@
                         </form>
                     </div>
 
-                    <form action="" id="form">
-                        <input type="text" id="message" class="text"/>
-                        <input type="submit" id="send" value="Envoyer" class="submit" />
-                    </form>
+
                 </article>
+
+                <form action="" id="form">
+                    <input type="text" id="message" class="text"/>
+                    <input type="submit" id="send" value="Envoyer" class="submit" />
+                </form>
+                
                 <article id="upload">
                     <div id="dropfile">Drop an image from your computer</div>
                     <form method="post" action="../" enctype="multipart/form-data">
