@@ -126,6 +126,12 @@
         overflow-y: scroll;
     }
 
+    #message {
+        background-color:black;
+        color : white;
+        flex: 1 0 auto;
+    }
+
     .info_usr {
         padding: 3px;
     }
