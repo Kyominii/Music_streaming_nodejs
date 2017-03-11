@@ -155,14 +155,14 @@ app.post('/', function(req, res) {
 
                             var callbacks = [];
 
+                            fs.writeFileSync('/home/hackathon/playlist.m3u', '');
+
                             callbacks.push(function(callback) {
                                 musicUpload.forEach(function (musicData) {
                                     fs.appendFile('/home/hackathon/playlist.m3u', musicData.path + "\n");
-                                    callback();
                                 });
+                                callback();
                             });
-
-                            console.log(musicUpload);
 
                             async.parallel(callbacks, function (err,result) {
                                 if(err) throw err;
