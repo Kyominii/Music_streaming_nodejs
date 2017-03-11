@@ -79,7 +79,7 @@
 				)
 			)
 		);
-
+/*
 		var nbItems = document.getElementsByClassName("item").length;
 		$("#fleche_droite").fadeIn(0);
 		$("#fleche_gauche").fadeIn(0);
@@ -100,7 +100,7 @@
 				$("#fleche_droite").fadeOut(0);
 				$("#fleche_gauche").fadeOut(0);
 			}
-		}
+		}*/
 
 		$(item).mouseenter(function () {
 			$(item).find(".info").stop().fadeIn(200);
