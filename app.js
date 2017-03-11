@@ -242,6 +242,7 @@ io.sockets.on('connection', function (socket) {
         nbVote++;
         if (nbVote>users.length/2) {
             //Image suivante
+            nbVote=0;
         }else {
             io.sockets.emit('vote' , nbVote);
         };
