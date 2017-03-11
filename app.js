@@ -238,6 +238,7 @@ io.sockets.on('connection', function (socket) {
     //reception vote
     socket.on('votage', function () {
         nbVote++;
+        console.log(nbVote + " " + users.length/2);
         if (nbVote>users.length/2) {
             var exec = require('child_process').exec;
             var pid;
@@ -245,7 +246,7 @@ io.sockets.on('connection', function (socket) {
             function puts3(error, stdout, stderr) { console.log(stdout); }
             exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
             nbVote=0;
-
+            console.log(nbVote);
         }else {
             io.sockets.emit('vote' , nbVote);
         };
