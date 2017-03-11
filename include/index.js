@@ -65,9 +65,7 @@ function callback(files) {
         data: formData,
         processData: false,
         success:  function (response){envoiOk(response);},
-        fail: function (response) {
-            $("#dropfile_img").attr("src","assets/images/icon_upload_rouge.png");
-        }
+        fail: function (response){envoiFail(response);}
     });
 }
 makeDroppable(element, callback);
@@ -134,6 +132,19 @@ $(".item").each(function (index, value) {
 function envoiOk(reponse) {
     $("#dropfile_img").attr("src","assets/images/icon_upload_vert.png");
     $("#dropfile").text("La musique a bien été envoyé");
+    setTimeout(function(){
+        $("#dropfile").text("Glissez une musique depuis votre ordinateur");
+        $("#dropfile_img").attr("src","assets/images/icon_upload_blanc.png");
+    }, 3000);
+}
+
+function envoiFail(reponse) {
+    $("#dropfile_img").attr("src","assets/images/icon_upload_rouge.png");
+    $("#dropfile").text("L'envoi a échoué");
+    setTimeout(function(){
+        $("#dropfile").text("Glissez une musique depuis votre ordinateur");
+        $("#dropfile_img").attr("src","assets/images/icon_upload_blanc.png");
+    }, 3000);
 
 }
 
