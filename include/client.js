@@ -119,13 +119,11 @@
 
     socket.on('newPlayingSong', function (data){
     	console.log(data);
-    	$(".vignette").removeClass("bordered");
-     //   $(".vignette:eq("+data[0]+")").find(".info").fadeIn();
-		$(".vignette:eq("+data[0]+")").find(".info").fadeIn().find(".preview").attr("src","assets/images/play_button_preview_rouge.png");
+        var p = $(".vignette:eq("+data[0]+")").css("border", "solid red 1px");
         if(data[0] != data[1]){
         	for(var i = data[0]; i < data[1]; i++)
             $('.owl-carousel').trigger('next.owl.carousel');
-			$(".vignette:eq("+data[1]+")").find(".info").fadeOut().find(".preview").attr("src","assets/images/play_button_preview.png");
+            $(".vignette:eq("+data[1]+")").css("border", "solid white 1px");
 		}
 
 
