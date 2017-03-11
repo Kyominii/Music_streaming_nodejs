@@ -42,16 +42,6 @@
     socket.on('newMusic', function (user) {
     	console.log(user);
 
-		/*<div class='item' name='"+musicUpload[i].preview+"'>"+
-		 "<div class='vignette'>"+
-		 "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
-		 "<div class='info'><div>"+
-		 "<div>"+musicUpload[i].album+"</div>"+
-		 "<div>"+musicUpload[i].artist+"</div>"+
-		 "<div>"+musicUpload[i].track+"</div>"+
-		 "</div>"+
-		 "</div>"+
-		 "</div></div>";*/
 		var item = $("<div>").addClass("item").attr("name",user.preview).append(
 			$("<div>").addClass("vignette").append(
 				$("<img>").attr("src", user.cover).attr("alt", user.track)

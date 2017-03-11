@@ -153,3 +153,9 @@ div.vignette > div > div{
 #upload form{
     display: none;
 }
+
+.info img{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}

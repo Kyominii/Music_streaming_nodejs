@@ -50,6 +50,7 @@ app.get('/', function(req, res) {
             "<div class='vignette'>"+
             "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
             "<div class='info'><div>"+
+            "<img src='assets/images/play_button_preview.png' alt='preview'/>"
             "<div>"+musicUpload[i].album+"</div>"+
             "<div>"+musicUpload[i].artist+"</div>"+
             "<div>"+musicUpload[i].track+"</div>"+
