@@ -1,6 +1,7 @@
 (function () {
 	var socket = io.connect("http://voxystudio.com:25568");
 	var msgtpl = $('#msgtpl').html();
+	var vote = false;
 	$('#msgtpl').remove();
 
 	$('#loginform').submit(function (event) {
@@ -30,7 +31,11 @@
 	//vote music suivante 
 	$('#voteMusic').submit(function (event) {
 		event.preventDefault();
-		socket.emit('votage');
+		if (!vote) {
+			vote = !vote;
+			socket.emit('votage');
+		};
+		
 	});
 
 	socket.on('vote', function (nbVote) {
