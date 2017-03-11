@@ -239,7 +239,7 @@ io.sockets.on('connection', function (socket) {
         if (nbVote>Object.keys(users).length/2) {
             var exec = require('child_process').exec;
             var pid;
-            function puts2(error, stdout, stderr) { pid = stdout; console.log(pid); exec("kill -SIGUSR1 " + pid, puts3); console.log("kill -SIGUSR1 " + pid + "terminé"); }
+            function puts2(error, stdout, stderr) { pid = stdout; console.log(pid); exec("kill -USR1 " + pid, puts3); console.log("kill -SIGUSR1 " + pid + "terminé"); }
             function puts3(error, stdout, stderr) { console.log(stdout); }
             exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
             nbVote=0;
