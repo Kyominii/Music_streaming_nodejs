@@ -26,7 +26,7 @@ body::-webkit-scrollbar-thumb {
 #titre{
 }
 
-#titre img{
+img.titre{
     height: 100px;
 }
 
