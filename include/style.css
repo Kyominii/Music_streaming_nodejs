@@ -56,15 +56,6 @@ div.vignette{
     border-spacing: 1em;
 }
 
-#chat{
-    max-width: 800px;
-    max-height: 300px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    overflow: auto;
-    position: relative;
-}
-
 #upload{
     display: table-cell;
     width: 200px;
@@ -117,7 +108,7 @@ div.vignette > div > div{
 
 
 .message {
-    border : solid 1px;
+    border-top: solid 1px white;
 }
 
 
@@ -129,13 +120,69 @@ div.vignette > div > div{
     top: 0;
     left: 0;
     position: fixed;
-    background-color: #444;
+    background: url(images/background_bienvenue.jpg) no-repeat fixed;
+    background-size:cover;
 }
 
 #form {
-    bottom: 2px;
-    position: absolute fixed;
+    border-top: solid 1px white;
+    display: block;
+    text-align: right;
+    margin: 0px;
+    padding: 3px 1em 3px 0px;
+    background-color: rgba(0,0,0,0.8);
 }
+
+
+#messages{
+    margin: 0px;
+    display: block;
+    height: 300px;
+    color: white;
+    overflow-y: scroll;
+}
+
+#chat{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.info{
+    padding: 3px;
+}
+
+.date{
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+#users{
+    border-bottom: solid 1px white;
+    display: block;
+    margin: 0px;
+    display: block;
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+}
+
+#users_infos{
+    padding: 5px;
+}
+
+#plus_info_users{
+    float: right;
+    font-size: 0.8em;
+}
+
+#liste_users{
+    display: none;
+}
+
+#liste_users div{
+    display: block;
+    padding: 3px 5px 3px 5px;
+}
+
 
 #frame_player{
     display: none;

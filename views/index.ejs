@@ -44,34 +44,34 @@
             <article id="contenu">
                 <article id="chat">
                     <div id="users">
+                        <div id="users_infos">
+                            <span id="nb_users"></span>
+                            <span id="plus_info_users">Utilisateurs</span>
+                        </div>
+                        <div id="liste_users">
+                        </div>
                     </div>
-
                     <div id="messages">
                         <div class="message" id="msgtpl" >
                             <div class="info">
-                                <p><strong>{{user.username}}  </strong> <span class="date">{{h}}:{{m}}</span></p>
-                                <p>{{message}}</p>
-
+                                <strong>{{user.username}}</strong> <span class="date">{{h}}h{{m}}</span> : {{message}}
                             </div>
                         </div>
                     </div>
-
-                    <div id="login">
-                        <form action="" id="loginform">
-                            <h1>Bienvenue</h1>
-                            <input type="text" name="login" id="username" placeholder="Nom d'utilisateur">
-                            <input type="submit" value="Connection"> 
-                        </form>
-                    </div>
-
-
+                    <form action="" id="form">
+                        <input type="text" id="message" placeholder="Votre message" class="text"/>
+                        <input type="submit" id="send" value="Envoyer" class="submit" />
+                    </form>
                 </article>
 
+                <div id="login">
+                    <form action="" id="loginform">
+                        <h1>Bienvenue</h1>
+                        <input type="text" name="login" id="username" placeholder="Pseudo">
+                        <input type="submit" value="Connexion">
+                    </form>
+                </div>
 
-                <form action="" id="form">
-                    <input type="text" id="message" class="text"/>
-                    <input type="submit" id="send" value="Envoyer" class="submit" />
-                </form>
                 <article id="upload">
                     <div id="dropfile">Glissez une musique depuis votre ordinateur</div>
                     <img dragged="false" id="dropfile_img" src="assets/images/icon_upload_blanc.png" />

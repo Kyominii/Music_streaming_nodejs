@@ -1,5 +1,4 @@
 (function () {
-
 	var socket = io.connect("http://voxystudio.com:25568");
 	var msgtpl = $('#msgtpl').html();
 	$('#msgtpl').remove();
@@ -25,17 +24,20 @@
 
 	socket.on('newmsg', function (message) {
 		$('#messages').append('<div class="message">'+ Mustache.render(msgtpl,message) + '</div>');
-		$('#chat').animate({scrollTop : $('#chat')[0].scrollHeight} , 50);
+		$('#messages').animate({scrollTop : $('#messages')[0].scrollHeight} , 50);
 	});
 
 	//gestion des connection
 	socket.on('newuser', function (user) {
-		$("#users").append('<p>' + user.username + '</p>');
+		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
+		$("#nb_users").text("Nombre d'utilisateurs : "+($("#liste_users").children.length+1));
 	});
 
 	//gestion des deconnections
 	socket.on('discuser', function (user) {
-		$('#' + user.id).remove();
+		$('#user_' + user.id).remove();
+		$("#nb_users").text("Nombre d'utilisateurs : "+($("#liste_users").children.length+1));
+		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
 	});
 
     //gestion des deconnections

@@ -155,3 +155,8 @@ holder.ondrop = function (e) {
     e.preventDefault();
     readfiles(e.dataTransfer.files);
 };
+
+$("#plus_info_users").click(function () {
+   $("#liste_users").slideToggle();
+});
+
