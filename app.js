@@ -54,7 +54,7 @@ app.get('/', function(req, res) {
         console.log(musicUpload[i]);
         html+="<div class='item' name='"+musicUpload[i].preview+"'>"+
             "<div class='vignette'>"+
-            "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
+            "<img src='"+musicUpload[i].cover+"' data='"+musicUpload[i].path+"' alt='"+musicUpload[i].track+"'/>"+
             "<div class='info'>"+
             "<img src='assets/images/play_button_preview.png' alt='preview'/>"+
             "<div>"+
