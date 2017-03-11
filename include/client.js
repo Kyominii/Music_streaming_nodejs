@@ -39,6 +39,7 @@
 
 	//gestion des connection
 	socket.on('newuser', function (objet) {
+		alert(objet.id);
 		var user = objet.user;
 		var nb = objet.nbUser;
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
