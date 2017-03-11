@@ -149,3 +149,7 @@ div.vignette > div > div{
     padding: 10px 25px 10px 25px;
     width: 150px;
 }
+
+#upload form{
+    display: none;
+}

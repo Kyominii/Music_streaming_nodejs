@@ -64,11 +64,9 @@ function callback(files) {
         contentType: false,
         data: formData,
         processData: false,
-        success: function(response) {
-            alert('Files uploaded successfully.');
-        },
+        success: envoiOk,
         fail: function (response) {
-            alert("error "+response);
+            $("#dropfile_img").attr("src","assets/images/icon_upload_rouge.png");
         }
     });
 }
@@ -133,8 +131,14 @@ $(".item").each(function (index, value) {
     });
 });
 
+function envoiOk(reponse) {
+    $("#dropfile_img").attr("src","assets/images/icon_upload_vert.png");
+
+}
+
 function readfiles(files) {
     $("#dropfile").text("envoi en cours");
+    $("#dropfile_img").attr("src","assets/images/icon_upload.png");
     for (var i = 0; i < files.length; i++) {
         reader = new FileReader();
         reader.onload = function(event) {
