@@ -79,25 +79,6 @@ $("#fleche_gauche").click(function () {
 
 });
 
-var nbItems = document.getElementsByClassName("item").length;
-if($(window).width() >= 600){
-    if($(window).width() >= 100){
-        if(nbItems <= 5){
-            $("#fleche_droite").fadeOut(0);
-            $("#fleche_gauche").fadeOut(0);
-        }
-    }else{
-        if(nbItems <= 3){
-            $("#fleche_droite").fadeOut(0);
-            $("#fleche_gauche").fadeOut(0);
-        }
-    }
-}else{
-    if(nbItems <= 1){
-        $("#fleche_droite").fadeOut(0);
-        $("#fleche_gauche").fadeOut(0);
-    }
-}
 
 $('.owl-carousel').owlCarousel({
     loop: false,
