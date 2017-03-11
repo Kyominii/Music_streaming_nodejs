@@ -6,6 +6,8 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const async = require('async');
 const ejs = require('ejs');
 const app = express();
+var md5 = require('MD5');
+var io = require('socket.io');
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
@@ -149,18 +151,7 @@ app.post('/', function(req, res) {
     }
 });
 
-app.listen(2000);
-
-var http = require('http');
-var md5 = require('MD5');
-
-httpServer = http.createServer(function (req,res) {
-    console.log("Bonjour");
-});
-
-httpServer.listen(3003);
-
-var io = require('socket.io').listen(httpServer);
+io = io.listen(app.listen(2000));
 var users = {};
 var messages = [];
 var history = 20;
@@ -194,7 +185,7 @@ io.sockets.on('connection', function (socket) {
     //je me connecte 
     socket.on('login', function (user) {
         me = user;
-        me.id = user.username;
+        me.id = md5(user.username);
         socket.emit('loged');
         users[me.id] = me;
         io.sockets.emit('newuser' , me);
