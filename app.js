@@ -252,7 +252,7 @@ setInterval(function() {
     var path = actualiserMusiqueCourante(station.title);
     if(path!==oldPath) {
 
-        io.socket.emit("newPlayingSong", path);
+        io.sockets.emit("newPlayingSong", path);
     }
     });
 }, 5000);
