@@ -240,7 +240,11 @@ io.sockets.on('connection', function (socket) {
     //reception vote
     socket.on('votage', function () {
         nbVote++;
-        io.sockets.emit('vote' , nbVote);
+        if (nbVote>users.length/2) {
+            //Image suivante
+        }else {
+            io.sockets.emit('vote' , nbVote);
+        };
     });
 
 });
