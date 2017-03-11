@@ -8,6 +8,17 @@ const ejs = require('ejs');
 const app = express();
 var md5 = require('MD5');
 var io = require('socket.io');
+var internetradio = require('node-internet-radio');
+
+
+
+var testStream = "http://voxystudio.com:25567/stream";
+setInterval(function() {
+    internetradio.getStationInfo(testStream, function(error, station) {
+        console.log(station);
+    });
+}, 5000);
+
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
