@@ -127,11 +127,6 @@
         overflow-y: scroll;
     }
 
-    #chat {
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
     .info {
         padding: 3px;
     }
@@ -220,8 +215,31 @@
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
     }
+
+    #chat {
+        display: table-cell;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 }
 
 @media all and (max-width: 800px) {
+    #contenu {
+        width: 100%;
+    }
 
+    #upload {
+        display: block;
+        width: 100%;
+        min-height: 300px;
+
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+    }
+
+    #chat {
+        display: block;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
 }
