@@ -225,14 +225,14 @@ io.sockets.on('connection', function (socket) {
         me.id = md5(user.username);
         socket.emit('loged');
         users[me.id] = me;
-        io.sockets.emit('newuser' , me, users.length);
+        io.sockets.emit('newuser' , {user : me , nbUser : users.length});
     });
 
     //je me deconnecte
     socket.on('disconnect', function () {
         if (!me) {return false};
         delete users[me.id];
-        io.sockets.emit('discuser' , me, users.length);
+        io.sockets.emit('discuser' , {user : me , nbUser : users.length});
     });
 
 
