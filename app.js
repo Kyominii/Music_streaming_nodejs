@@ -16,7 +16,7 @@ var spotifyApi = new SpotifyWebApi({
     redirectUri : 'http://localhost/callback'
 });
 
-fs.writeFile('/home/hackathon/playlist.m3u', '', function(){
+fs.writeFile('/home/hackathon/playlist.m3u', 'Audioslave - Be Yourself.mp3', function(){
 });
 
 io = io.listen(app.listen(25568));
