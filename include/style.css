@@ -108,7 +108,7 @@ div.vignette > div > div{
 
 
 .message {
-    border-top: solid 1px white;
+    border-top: solid 1px rgba(255,255,255,0.8);
 }
 
 
@@ -125,7 +125,7 @@ div.vignette > div > div{
 }
 
 #form {
-    border-top: solid 1px white;
+    border-top: solid 1px rgba(255,255,255,0.8);
     display: block;
     text-align: right;
     margin: 0px;

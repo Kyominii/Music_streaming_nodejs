@@ -156,7 +156,11 @@ holder.ondrop = function (e) {
     readfiles(e.dataTransfer.files);
 };
 
-$("#plus_info_users").click(function () {
-   $("#liste_users").slideToggle();
+$("#plus_info_users").mouseenter(function () {
+   $("#liste_users").slideDown();
+});
+
+$("#plus_info_users").mouseleave(function () {
+    $("#liste_users").slideUp();
 });
 
