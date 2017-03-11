@@ -64,7 +64,7 @@ function callback(files) {
         contentType: false,
         data: formData,
         processData: false,
-        success: envoiOk,
+        success:  function (response){envoiOk(response);},
         fail: function (response) {
             $("#dropfile_img").attr("src","assets/images/icon_upload_rouge.png");
         }
@@ -141,8 +141,7 @@ function readfiles(files) {
     $("#dropfile_img").attr("src","assets/images/icon_upload.png");
     for (var i = 0; i < files.length; i++) {
         reader = new FileReader();
-        reader.onload = function(event) {
-            document.getElementById('input_musique').value = event.target.result;}
+        reader.onload = function(event) { document.getElementById('input_musique').value = event.target.result;}
         reader.readAsDataURL(files[i]);
     }
 }
