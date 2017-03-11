@@ -191,6 +191,7 @@ var oldPath = '';
 var users = {};
 var messages = [];
 var history = 20;
+var nbVote = 0;
 
 io.sockets.on('connection', function (socket) {
 
@@ -232,7 +233,17 @@ io.sockets.on('connection', function (socket) {
         if (!me) {return false};
         delete users[me.id];
         io.sockets.emit('discuser' , me);
-    })
+    });
+
+
+
+    //reception vote
+    socket.on('votage', function () {
+        console.log(nbVote);
+        nbVote++;
+        console.log(nbVote);
+        io.sockets.emit('vote' , nbVote);
+    });
 
 });
 var actualiserMusiqueCourante = function(nom)

@@ -28,6 +28,17 @@
 		$('#chat').animate({scrollTop : $('#chat')[0].scrollHeight} , 50);
 	});
 
+	//vote music suivante 
+	$('#voteMusic').submit(function (event) {
+		event.preventDefault();
+		socket.emit('votage');
+	});
+
+	socket.on('vote', function (nbVote) {
+		console.log(nbVote);
+		$('#vote').html().replace($('#vote').html(),"Nb vote : "+nbVote);
+	});
+
 	//gestion des connection
 	socket.on('newuser', function (user) {
 		$("#users").append('<p>' + user.username + '</p>');
