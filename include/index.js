@@ -1,4 +1,4 @@
-$(document).on('dragenter', '#dropfile', function() {
+/*$(document).on('dragenter', '#dropfile', function() {
     $(this).css('color', 'red');
     return false;
 });
@@ -34,9 +34,13 @@ $(document).on('drop', '#dropfile', function(e) {
     return false;
 });
 
+var fileUpload;
+
 function upload(files) {
+
     var f = files[0] ;
 
+    fileUpload = f;
     // Only process image files.
     var reader = new FileReader();
 
@@ -52,11 +56,11 @@ function handleReaderLoad(evt) {
     var pic = {};
     pic.file = evt.target.result.split(',')[1];
 
-    var str = jQuery.param(pic);
-
+    var str = jQuery.param(pic);*/
+/*
     $.ajax({
         type: 'POST',
-        url: "SCRIPT TRAITEMENT",
+        url: "../upload",
         data: str,
             success: function(data) {
                 alert("ok") ;
@@ -64,9 +68,135 @@ function handleReaderLoad(evt) {
             fail : function (data) {
                 alert("non") ;
             }
+    });*/
+/*
+<<<<<<< 518d1d591aabb3ff7bbecb6dff4c122b37ba004f
+    var pr = $.ajax("../",{
+        type : "POST",
+        context : this,
+        data : str
+=======
+alert(fileUpload);
+
+    var pr = $.ajax({
+        type: "POST",
+        url: "../",
+        enctype: 'multipart/form-data',
+        data: {
+            file: fileUpload
+        }
     });
+    pr.done(function(jqXHR, status, error){alert(0);});
+    pr.fail(function(jqXHR, status, error){alert( "error loading data : "+ error);});
+}
+*/
+
+function makeDroppable(element, callback) {
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('multiple', true);
+    input.style.display = 'none';
+
+    input.addEventListener('change', triggerCallback);
+    element.appendChild(input);
+
+    element.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.add('dragover');
+    });
+
+    element.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.remove('dragover');
+    });
+
+    element.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.remove('dragover');
+        triggerCallback(e);
+    });
+
+    element.addEventListener('click', function() {
+        input.value = null;
+        input.click();
+    });
+
+    function triggerCallback(e) {
+        var files;
+        if(e.dataTransfer) {
+            files = e.dataTransfer.files;
+        } else if(e.target) {
+            files = e.target.files;
+        }
+        callback.call(null, files);
+    }
 }
 
+var element = document.querySelector('#upload');
+function callback(files) {
+    // Here, we simply log the Array of files to the console.
+    console.log(files[0]);
+    var formData = new FormData();
+    formData.append("files", files);
+
+// Choix de l'utilisateur à partir d'un input HTML de type file...
+    formData.append("musique", files[0]);
+/*
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "../");
+    request.send(formData);
+*/
+    $.ajax({
+        url: '/',
+        method: 'POST',
+        contentType: false,
+        data: formData,
+        processData: false,
+        success: function(response) {
+            alert('Files uploaded successfully.');
+        },
+        fail: function (response) {
+            alert("error "+response);
+        }
+    });/*
+    $.ajax({
+        // Your server script to process the upload
+        url: '../',
+        type: 'POST',
+
+        // Form data
+        data: formData,
+
+        // Tell jQuery not to process data or worry about content-type
+        // You *must* include these options!
+        cache: false,
+        contentType: false,
+        processData: false,
+
+        // Custom XMLHttpRequest
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) {
+                // For handling the progress of the upload
+                myXhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        $('progress').attr({
+                            value: e.loaded,
+                            max: e.total,
+                        });
+                    }
+                } , false);
+            }
+            return myXhr;
+        },
+    });*/
+}
+makeDroppable(element, callback);
 
 $("#fleche_droite").click(function () {
     $('.owl-carousel').trigger('next.owl.carousel');
@@ -126,3 +256,17 @@ $(".item").each(function (index, value) {
         $(value).find(".info").stop().fadeOut(200);
     });
 });
+
+function readfiles(files) {
+    for (var i = 0; i < files.length; i++) {
+        reader = new FileReader();
+        reader.onload = function(event) {
+            document.getElementById('input_musique').value = event.target.result;}
+        reader.readAsDataURL(files[i]);
+    }
+}
+var holder = document.getElementById('upload');
+holder.ondrop = function (e) {
+    e.preventDefault();
+    readfiles(e.dataTransfer.files);
+}

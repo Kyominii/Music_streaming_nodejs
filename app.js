@@ -6,6 +6,8 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const async = require('async');
 const ejs = require('ejs');
 const app = express();
+var md5 = require('MD5');
+var io = require('socket.io');
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
@@ -135,6 +137,15 @@ app.post('/', function(req, res) {
                                 path: uploadPath
                             };
                             musicUpload.push(musique);
+
+                            var sys = require('sys')
+                            var exec = require('child_process').exec;
+                            var pid;
+                            function puts(error, stdout, stderr) { sys.puts(stdout); console.log(stdout); exec("kill -1 " + pid, puts3); }
+                            function puts2(error, stdout, stderr) { pid = stdout; console.log(pid); }
+                            function puts3(error, stdout, stderr) { sys.puts(stdout); console.log(stdout); }
+                            exec("find /home/hackathon/www/uploads/ -name *.mp3 > /home/hackathon/playlist.m3u", puts3);
+                            exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
                         }
                         res.redirect('/');
                     }else{
@@ -149,29 +160,7 @@ app.post('/', function(req, res) {
     }
 });
 
-app.listen(2000);
-
-
-
-
-
-
-
-
-
-
-
-
-var http = require('http');
-var md5 = require('MD5');
-
-httpServer = http.createServer(function (req,res) {
-    console.log("Bonjour");
-});
-
-httpServer.listen(3003);
-
-var io = require('socket.io').listen(httpServer);
+io = io.listen(app.listen(2000));
 var users = {};
 var messages = [];
 var history = 20;
@@ -205,7 +194,7 @@ io.sockets.on('connection', function (socket) {
     //je me connecte 
     socket.on('login', function (user) {
         me = user;
-        me.id = user.username;
+        me.id = md5(user.username);
         socket.emit('loged');
         users[me.id] = me;
         io.sockets.emit('newuser' , me);
