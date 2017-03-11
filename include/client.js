@@ -121,11 +121,11 @@
     	console.log(data);
     	$(".vignette").removeClass("bordered");
      //   $(".vignette:eq("+data[0]+")").find(".info").fadeIn();
-		$(".vignette:eq("+data[0]+")").find(".info").fadeIn().find(".preview").attr("src","TEST");
+		$(".vignette:eq("+data[0]+")").find(".info").fadeIn().find(".preview").attr("src","assets/images/play_button_preview_rouge.png");
         if(data[0] != data[1]){
         	for(var i = data[0]; i < data[1]; i++)
             $('.owl-carousel').trigger('next.owl.carousel');
-            $(".vignette:eq("+data[1]+")").fadeOut();
+			$(".vignette:eq("+data[1]+")").find(".info").fadeOut().find(".preview").attr("src","assets/images/play_button_preview.png");
 		}
 
 
