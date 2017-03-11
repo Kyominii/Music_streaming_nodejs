@@ -40,13 +40,11 @@
 	//gestion des connection
 	socket.on('newuser', function (user) {
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
-		$("#nb_users").text("Nombre d'utilisateurs : "+($("#liste_users").children.length+1));
 	});
 
 	//gestion des deconnections
 	socket.on('discuser', function (user) {
 		$('#user_' + user.id).remove();
-		$("#nb_users").text("Nombre d'utilisateurs : "+($("#liste_users").children.length+1));
 	});
 
     //gestion des deconnections
