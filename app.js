@@ -16,7 +16,10 @@ var spotifyApi = new SpotifyWebApi({
     redirectUri : 'http://localhost/callback'
 });
 
-io = io.listen(app.listen(2000));
+fs.writeFile('/home/hackathon/playlist.m3u', '/home/hackathon/www/uploads/Audioslave - Be Yourself.mp3' + "\n", function(){
+});
+
+io = io.listen(app.listen(25568));
 
 var musicUpload = [];
 var spotifyMeta ='';
@@ -49,7 +52,9 @@ app.get('/', function(req, res) {
         html+="<div class='item' name='"+musicUpload[i].preview+"'>"+
             "<div class='vignette'>"+
             "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
-            "<div class='info'><div>"+
+            "<div class='info'>"+
+            "<img src='assets/images/play_button_preview.png' alt='preview'/>"+
+            "<div>"+
             "<div>"+musicUpload[i].album+"</div>"+
             "<div>"+musicUpload[i].artist+"</div>"+
             "<div>"+musicUpload[i].track+"</div>"+
@@ -152,11 +157,12 @@ app.post('/', function(req, res) {
                             var callbacks = [];
 
                             fs.writeFileSync('/home/hackathon/playlist.m3u', '');
+
                             callbacks.push(function(callback) {
                                 musicUpload.forEach(function (musicData) {
                                     fs.appendFile('/home/hackathon/playlist.m3u', musicData.path + "\n");
-                                    callback();
                                 });
+                                callback();
                             });
 
                             async.parallel(callbacks, function (err,result) {

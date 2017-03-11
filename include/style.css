@@ -153,3 +153,10 @@ div.vignette > div > div{
 #upload form{
     display: none;
 }
+
+img.preview{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0.1;
+}
