@@ -72,6 +72,7 @@
 		);
 
         socket.on("newPlayingSong", function (data){
+        	console.log('emit received');
             $(".bordered").toggleClass("bordered");
             $(".vignette").find("[data='" + data + "']").toggleClass("bordered");
         });
