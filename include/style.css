@@ -1,222 +1,242 @@
-html{
-    height: 100%;
-    font-family:Verdana,sans-serif;
+@media all {
+
+    html {
+        height: 100%;
+        font-family: Verdana, sans-serif;
+    }
+
+    body {
+        margin: 0px;
+        background: url(images/Bakcground-test.jpg) no-repeat fixed;
+        background-size: cover;
+
+    }
+
+    body::-webkit-scrollbar {
+        width: 1em;
+    }
+
+    body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
+
+    #titre {
+    }
+
+    img.titre {
+        height: 100px;
+    }
+
+    div.margin {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    div.vignette {
+        color: white;
+        height: 180px;
+        width: 180px;
+        display: inline-block;
+        margin: 10px;
+        border: solid 1px white;
+    }
+
+    #playlist {
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: solid 1px rgba(125, 125, 125, 0.5);
+    }
+
+    #contenu {
+        display: table;
+        width: 100%;
+        border-spacing: 1em;
+    }
+
+    #upload {
+        display: table-cell;
+        width: 200px;
+        min-height: 300px;
+
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+    }
+
+    #stream-player {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    div.vignette > div {
+        display: none;
+        position: absolute;
+        top: 11px;
+        height: 180px;
+        width: 180px;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    div.vignette > div > div {
+        color: white;
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        margin-left: 5px;
+    }
+
+    #dropfile {
+        text-align: center;
+    }
+
+    .float_right {
+        float: right;
+        padding-right: 2em;
+    }
+
+    .float_left {
+        float: left;
+        padding-left: 2em;
+    }
+
+    .float_left img, .float_right img {
+        width: 40px;
+        margin-top: 80px;
+    }
+
+    .message {
+        border-top: solid 1px rgba(255, 255, 255, 0.8);
+    }
+
+    #login {
+        text-align: center;
+        z-index: 2;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background: url(images/background_bienvenue.jpg) no-repeat fixed;
+        background-size: cover;
+    }
+
+    #form {
+        border-top: solid 1px rgba(255, 255, 255, 0.8);
+        display: block;
+        text-align: right;
+        margin: 0px;
+        padding: 3px 1em 3px 0px;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    #messages {
+        margin: 0px;
+        display: block;
+        height: 300px;
+        color: white;
+        overflow-y: scroll;
+    }
+
+    #chat {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .info {
+        padding: 3px;
+    }
+
+    .date {
+        font-size: 0.8em;
+        font-style: italic;
+    }
+
+    #users {
+        border-bottom: solid 1px white;
+        display: block;
+        margin: 0px;
+        display: block;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    #users_infos {
+        padding: 5px;
+    }
+
+    #plus_info_users {
+        float: right;
+        font-size: 0.8em;
+    }
+
+    #liste_users {
+        display: none;
+    }
+
+    #liste_users div {
+        display: block;
+        padding: 3px 5px 3px 5px;
+    }
+
+    #frame_player {
+        display: none;
+        border: none;
+        margin-top: 1em;
+        height: 40px;
+        width: 100%;
+    }
+
+    #upload img {
+        padding: 10px 25px 10px 25px;
+        width: 150px;
+    }
+
+    #upload form {
+        display: none;
+    }
+
+    img.preview {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        opacity: 0.1;
+    }
+
+    .bordered {
+        border: solid red 3px;
+    }
+
+    #vote {
+        color: #fff;
+    }
+
+    h1 {
+        color: white;
+    }
 }
 
-body{
-    margin: 0px;
-    background: url(images/Bakcground-test.jpg) no-repeat fixed;
-    background-size:cover;
+@media all and (min-width: 800px) {
+    #contenu {
+        display: table;
+        width: 100%;
+        border-spacing: 1em;
+    }
 
+    #upload {
+        display: table-cell;
+        width: 200px;
+        min-height: 300px;
+
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+    }
 }
 
-body::-webkit-scrollbar {
-    width: 1em;
-}
+@media all and (max-width: 800px) {
 
-body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    outline: 1px solid slategrey;
-}
-
-#titre{
-}
-
-img.titre{
-    height: 100px;
-}
-
-div.margin{
-    max-width: 1000px;
-    margin: auto;
-}
-
-div.vignette{
-    color: white;
-    height: 180px;
-    width: 180px;
-    display: inline-block;
-    margin: 10px;
-    border: solid 1px white;
-}
-
-#playlist{
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border: solid 1px rgba(125, 125, 125, 0.5);
-}
-
-#contenu{
-    display: table;
-    width: 100%;
-    border-spacing: 1em;
-}
-
-#upload{
-    display: table-cell;
-    width: 200px;
-    min-height: 300px;
-
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-}
-
-#stream-player{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-div.vignette > div{
-    display: none;
-    position: absolute;
-    top: 11px;
-    height: 180px;
-    width: 180px;
-    background-color: rgba(0,0,0,0.8);
-}
-
-div.vignette > div > div{
-    color: white;
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-    margin-left: 5px;
-}
-
-#dropfile{
-    text-align: center;
-}
-
-.float_right{
-    float: right;
-    padding-right: 2em;
-}
-
-.float_left{
-    float: left;
-    padding-left: 2em;
-}
-
-.float_left img, .float_right img{
-    width: 40px;
-    margin-top: 80px;
-}
-
-
-.message {
-    border-top: solid 1px rgba(255,255,255,0.8);
-}
-
-
-#login {
-    text-align: center;
-    z-index: 2;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: url(images/background_bienvenue.jpg) no-repeat fixed;
-    background-size:cover;
-}
-
-#form {
-    border-top: solid 1px rgba(255,255,255,0.8);
-    display: block;
-    text-align: right;
-    margin: 0px;
-    padding: 3px 1em 3px 0px;
-    background-color: rgba(0,0,0,0.8);
-}
-
-
-#messages{
-    margin: 0px;
-    display: block;
-    height: 300px;
-    color: white;
-    overflow-y: scroll;
-}
-
-#chat{
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.info{
-    padding: 3px;
-}
-
-.date{
-    font-size: 0.8em;
-    font-style: italic;
-}
-
-#users{
-    border-bottom: solid 1px white;
-    display: block;
-    margin: 0px;
-    display: block;
-    color: white;
-    background-color: rgba(0,0,0,0.8);
-}
-
-#users_infos{
-    padding: 5px;
-}
-
-#plus_info_users{
-    float: right;
-    font-size: 0.8em;
-}
-
-#liste_users{
-    display: none;
-}
-
-#liste_users div{
-    display: block;
-    padding: 3px 5px 3px 5px;
-}
-
-
-#frame_player{
-    display: none;
-    border: none;
-    margin-top: 1em;
-    height: 40px;
-    width: 100%;
-}
-
-#upload img{
-    padding: 10px 25px 10px 25px;
-    width: 150px;
-}
-
-#upload form{
-    display: none;
-}
-
-
-img.preview{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    opacity: 0.1;
-}
-
-.bordered{
-    border: solid red 3px;
-}
-
-#vote {
-    color: #fff;
-}
-
-h1{
-    color: white;
 }
