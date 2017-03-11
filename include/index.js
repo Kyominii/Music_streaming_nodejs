@@ -91,17 +91,70 @@ alert(fileUpload);
 }
 */
 
-function allowDrop(ev) {
-    ev.preventDefault();
+function makeDroppable(element, callback) {
+
+    var input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('multiple', true);
+    input.style.display = 'none';
+
+    input.addEventListener('change', triggerCallback);
+    element.appendChild(input);
+
+    element.addEventListener('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.add('dragover');
+    });
+
+    element.addEventListener('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.remove('dragover');
+    });
+
+    element.addEventListener('drop', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        element.classList.remove('dragover');
+        triggerCallback(e);
+    });
+
+    element.addEventListener('click', function() {
+        input.value = null;
+        input.click();
+    });
+
+    function triggerCallback(e) {
+        var files;
+        if(e.dataTransfer) {
+            files = e.dataTransfer.files;
+        } else if(e.target) {
+            files = e.target.files;
+        }
+        callback.call(null, files);
+    }
 }
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+
+var element = document.querySelector('.droppable');
+function callback(files) {
+    // Here, we simply log the Array of files to the console.
+    console.log(files);
+    var formData = new FormData();
+    formData.append("files", files);
+
+    $.ajax({
+        url: '/server_upload_url',
+        method: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            alert('Files uploaded successfully.');
+        }
+    });
 }
-function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
+makeDroppable(element, callback);
 
 $("#fleche_droite").click(function () {
     $('.owl-carousel').trigger('next.owl.carousel');
