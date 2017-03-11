@@ -260,7 +260,6 @@ setInterval(function() {
     internetradio.getStationInfo(testStream, function(error, station) {
     var path = actualiserMusiqueCourante(station.title);
     if(path!==oldPath) {
-
         io.sockets.emit("newPlayingSong", path);
     }
     });
