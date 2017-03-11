@@ -35,7 +35,9 @@
 
 	socket.on('vote', function (nbVote) {
 		console.log(nbVote);
+		console.log("Nb vote : "+nbVote);
 		$('#vote').text("Nb vote : "+nbVote);
+		console.log($('#vote').html());
 	});
 
 	//gestion des connection
