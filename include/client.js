@@ -107,8 +107,9 @@
     });
 
     socket.on('newPlayingSong', function (data){
-        $(".bordered").toggleClass("bordered");
-        $(".vignette").find("[data='" + data + "']").toggleClass("bordered");
+    	console.log(data);
+    	$(".vignette").removeClass("bordered");
+        $(".vignette:nth-child("+data+")").addClass("bordered");
     });
 
 })();
