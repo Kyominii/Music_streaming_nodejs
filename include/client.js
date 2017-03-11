@@ -35,6 +35,7 @@
 	});
 
 	socket.on('vote', function (nbVote) {
+		console.log(nbVote);
 		$('#vote').text("Nb vote : "+nbVote);
 	});
 
