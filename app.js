@@ -239,9 +239,7 @@ io.sockets.on('connection', function (socket) {
 
     //reception vote
     socket.on('votage', function () {
-        console.log(nbVote);
         nbVote++;
-        console.log(nbVote);
         io.sockets.emit('vote' , nbVote);
     });
 

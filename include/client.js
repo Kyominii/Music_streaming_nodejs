@@ -35,8 +35,7 @@
 	});
 
 	socket.on('vote', function (nbVote) {
-		console.log(nbVote);
-		$('#vote').html().replace($('#vote').html(),"Nb vote : "+nbVote);
+		$('#vote').text("Nb vote : "+nbVote);
 	});
 
 	//gestion des connection
