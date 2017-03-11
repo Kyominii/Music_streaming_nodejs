@@ -47,7 +47,6 @@
 	socket.on('discuser', function (user) {
 		$('#user_' + user.id).remove();
 		$("#nb_users").text("Nombre d'utilisateurs : "+($("#liste_users").children.length+1));
-		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
 	});
 
     //gestion des deconnections
