@@ -136,23 +136,64 @@ function makeDroppable(element, callback) {
     }
 }
 
-var element = document.querySelector('.droppable');
+var element = document.querySelector('#upload');
 function callback(files) {
     // Here, we simply log the Array of files to the console.
-    console.log(files);
+    console.log(files[0]);
     var formData = new FormData();
-    formData.append("files", files);
 
+// Choix de l'utilisateur à partir d'un input HTML de type file...
+    formData.append("musique", files[0]);
+/*
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "../");
+    request.send(formData);
+*/
     $.ajax({
-        url: '/server_upload_url',
-        method: 'post',
+        url: '/',
+        method: 'POST',
+        contentType: false,
         data: formData,
         processData: false,
-        contentType: false,
         success: function(response) {
             alert('Files uploaded successfully.');
+        },
+        fail: function (response) {
+            alert("error "+response);
         }
-    });
+    });/*
+    $.ajax({
+        // Your server script to process the upload
+        url: '../',
+        type: 'POST',
+
+        // Form data
+        data: formData,
+
+        // Tell jQuery not to process data or worry about content-type
+        // You *must* include these options!
+        cache: false,
+        contentType: false,
+        processData: false,
+
+        // Custom XMLHttpRequest
+        xhr: function() {
+            var myXhr = $.ajaxSettings.xhr();
+            if (myXhr.upload) {
+                // For handling the progress of the upload
+                myXhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        $('progress').attr({
+                            value: e.loaded,
+                            max: e.total,
+                        });
+                    }
+                } , false);
+            }
+            return myXhr;
+        },
+    });*/
 }
 makeDroppable(element, callback);
 
@@ -214,3 +255,17 @@ $(".item").each(function (index, value) {
         $(value).find(".info").stop().fadeOut(200);
     });
 });
+
+function readfiles(files) {
+    for (var i = 0; i < files.length; i++) {
+        reader = new FileReader();
+        reader.onload = function(event) {
+            document.getElementById('input_musique').value = event.target.result;}
+        reader.readAsDataURL(files[i]);
+    }
+}
+var holder = document.getElementById('upload');
+holder.ondrop = function (e) {
+    e.preventDefault();
+    readfiles(e.dataTransfer.files);
+}
