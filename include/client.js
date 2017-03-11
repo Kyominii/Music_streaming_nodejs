@@ -35,7 +35,7 @@
 	});
 
 	socket.on('vote', function (nbVote) {
-		console.log("OUI");
+		console.log(nbVote);
 		$('#vote').html().replace($('#vote').html(),"Nb vote : "+nbVote);
 	});
 
