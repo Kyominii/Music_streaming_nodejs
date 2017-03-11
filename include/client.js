@@ -25,7 +25,7 @@
 
 	socket.on('newmsg', function (message) {
 		$('#messages').append('<div class="message">'+ Mustache.render(msgtpl,message) + '</div>');
-		$('#messages').animate({scrollTop : $('#messages').prop('scrollHeight')} , 500);
+		$('#chat').animate({scrollTop : $('#chat')[0].scrollHeight} , 50);
 	});
 
 	//gestion des connection
