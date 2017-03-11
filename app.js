@@ -16,6 +16,9 @@ var spotifyApi = new SpotifyWebApi({
     redirectUri : 'http://localhost/callback'
 });
 
+fs.writeFile('/home/hackathon/playlist.m3u', '', function(){
+});
+
 io = io.listen(app.listen(2000));
 
 var musicUpload = [];
@@ -152,18 +155,14 @@ app.post('/', function(req, res) {
 
                             var callbacks = [];
 
-                            callbacks.push(function(callback){
-                                fs.writeFile('/home/hackathon/playlist.m3u', '', function(){
-                                    callback();
-                                });
-                            });
-
                             callbacks.push(function(callback) {
                                 musicUpload.forEach(function (musicData) {
                                     fs.appendFile('/home/hackathon/playlist.m3u', musicData.path + "\n");
                                     callback();
                                 });
                             });
+
+                            console.log(musicUpload);
 
                             async.parallel(callbacks, function (err,result) {
                                 if(err) throw err;
