@@ -148,7 +148,7 @@ app.post('/', function(req, res) {
                             };
                             musicUpload.push(musique);
                             io.sockets.emit('newMusic',musique);
-                            console.log('emit');
+                            console.log(simpleMeta);
 
                             var sys = require('sys')
                             var exec = require('child_process').exec;
