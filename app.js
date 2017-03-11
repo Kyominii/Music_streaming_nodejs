@@ -147,8 +147,22 @@ app.post('/', function(req, res) {
                             var pid;
                             function puts2(error, stdout, stderr) { pid = stdout; console.log(pid); exec("kill -1 " + pid, puts3); console.log("kill -1 " + pid + "terminé"); }
                             function puts3(error, stdout, stderr) { console.log(stdout); }
-                            exec("find /home/hackathon/www/uploads/ -name *.mp3 > /home/hackathon/playlist.m3u", puts3);
-                            exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
+                            //exec("find /home/hackathon/www/uploads/ -name *.mp3 > /home/hackathon/playlist.m3u", puts3);
+
+                            var callbacks = [];
+
+                            fs.writeFileSync('/home/hackathon/playlist.m3u', '');
+                            callbacks.push(function(callback) {
+                                musicUpload.forEach(function (musicData) {
+                                    fs.appendFile('/home/hackathon/playlist.m3u', musicData.path + "\n");
+                                    callback();
+                                });
+                            });
+
+                            async.parallel(callbacks, function (err,result) {
+                                if(err) throw err;
+                                exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
+                            });
                         }
                         res.redirect('/');
                     }else{
