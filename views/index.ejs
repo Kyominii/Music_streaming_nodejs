@@ -92,14 +92,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="assets/client.js"></script>
     <script src="assets/mustache.js"></script>
-    <script>
-        var socket = io.connect('http://voxystudio.com:25568');
-
-        socket.on("newPlayingSong", function (data){
-            $(".bordered").toggleClass("bordered");
-            $(".vignette").find("[data='" + path + "']").toggleClass("bordered");
-        });
-    </script>
 
 </body>
 </html>
