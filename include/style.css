@@ -160,5 +160,5 @@ div.vignette > div > div{
     position: absolute;
     opacity: 0.5;
     top: 75px;
-    right: 75px;
+    left: 75px;
 }
