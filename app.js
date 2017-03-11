@@ -248,6 +248,9 @@ io.sockets.on('connection', function (socket) {
     });
 
 });
+
+var oldId;
+
 var actualiserMusiqueCourante = function(nom)
 {
     for(var i=0; i<musicUpload.length;i++ )
@@ -264,6 +267,7 @@ var testStream = "http://voxystudio.com:25567/stream";
 setInterval(function() {
     internetradio.getStationInfo(testStream, function(error, station) {
     var path = actualiserMusiqueCourante(station.title);
-    io.sockets.emit("newPlayingSong",path );
+    io.sockets.emit("newPlayingSong",[path, oldId]);
+    oldId=path;
     });
 }, 5000);
