@@ -40,7 +40,7 @@
 	//gestion des connection
 	socket.on('newuser', function (objet) {
 		var user = objet.user;
-		var nb = objet.nb;
+		var nb = objet.nbUser;
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
 		$("#nb_users").text("Nombre d'utilisateurs : "+nb);
 	});
@@ -48,7 +48,7 @@
 	//gestion des deconnections
 	socket.on('discuser', function (objet) {
 		var user = objet.user;
-		var nb = objet.nb;
+		var nb = objet.nbUser;
 		$('#user_' + user.id).remove();
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
 	});
