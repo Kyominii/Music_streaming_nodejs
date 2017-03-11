@@ -8,6 +8,9 @@ const ejs = require('ejs');
 const app = express();
 var md5 = require('MD5');
 var io = require('socket.io');
+var internetradio = require('node-internet-radio');
+
+
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
@@ -51,7 +54,7 @@ app.get('/', function(req, res) {
         console.log(musicUpload[i]);
         html+="<div class='item' name='"+musicUpload[i].preview+"'>"+
             "<div class='vignette'>"+
-            "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
+            "<img src='"+musicUpload[i].cover+"' data='"+musicUpload[i].path+"' alt='"+musicUpload[i].track+"'/>"+
             "<div class='info'>"+
             "<img src='assets/images/play_button_preview.png' alt='preview'/>"+
             "<div>"+
@@ -75,7 +78,7 @@ app.get('/musics',function (req,res) {
     var html ='';
     for(var i=0; i<musicUpload.length;i++)
     {
-        html+='<img src="'+musicUpload[i].cover+'" alt="'+musicUpload[i].track+'"><a href="'+musicUpload[i].preview+'">Preview</a><p>'+musicUpload[i].track+'</p>';
+        html+='<img src="'+musicUpload[i].cover+'" data="'+musicUpload[i].path+'" alt="'+musicUpload[i].track+'"><a href="'+musicUpload[i].preview+'">Preview</a><p>'+musicUpload[i].track+'</p>';
     }
     return res.status(200).send(html);
 });
@@ -183,10 +186,12 @@ app.post('/', function(req, res) {
     }
 });
 
-
+var oldVignette ='';
+var oldPath = '';
 var users = {};
 var messages = [];
 var history = 20;
+var nbVote = 0;
 
 io.sockets.on('connection', function (socket) {
 
@@ -228,6 +233,35 @@ io.sockets.on('connection', function (socket) {
         if (!me) {return false};
         delete users[me.id];
         io.sockets.emit('discuser' , me);
-    })
+    });
+
+
+
+    //reception vote
+    socket.on('votage', function () {
+        nbVote++;
+        io.sockets.emit('vote' , nbVote);
+    });
 
 });
+var actualiserMusiqueCourante = function(nom)
+{
+    for(var i=0; i<musicUpload.length;i++ )
+    {
+        if(musicUpload[i].path.replace(__dirname,'') === nom)
+            return musicUpload[i].path;
+    }
+
+    return null;
+}
+
+var testStream = "http://voxystudio.com:25567/stream";
+setInterval(function() {
+    internetradio.getStationInfo(testStream, function(error, station) {
+    var path = actualiserMusiqueCourante(station.title);
+    if(path!==oldPath) {
+
+        io.sockets.emit("newPlayingSong", path);
+    }
+    });
+}, 5000);

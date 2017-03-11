@@ -72,6 +72,11 @@
                     </form>
                 </div>
 
+                <form action="" id="voteMusic">
+                    <input type="submit" id="vote" value="Music suivante" class="submit" />
+                    <p id="vote">Nb vote :</p>
+                </form>
+
                 <article id="upload">
                     <div id="dropfile">Glissez une musique depuis votre ordinateur</div>
                     <img dragged="false" id="dropfile_img" src="assets/images/icon_upload_blanc.png" />
@@ -92,9 +97,6 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="assets/client.js"></script>
     <script src="assets/mustache.js"></script>
-    <script>
-        var socket = io.connect('http://voxystudio.com:25568');
-    </script>
 
 </body>
 </html>

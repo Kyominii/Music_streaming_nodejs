@@ -27,6 +27,17 @@
 		$('#messages').animate({scrollTop : $('#messages')[0].scrollHeight} , 50);
 	});
 
+	//vote music suivante 
+	$('#voteMusic').submit(function (event) {
+		event.preventDefault();
+		socket.emit('votage');
+	});
+
+	socket.on('vote', function (nbVote) {
+		console.log(nbVote);
+		$('#vote').text("Nb vote : "+nbVote);
+	});
+
 	//gestion des connection
 	socket.on('newuser', function (user) {
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
@@ -46,7 +57,7 @@
 
 		var item = $("<div>").addClass("item").attr("name",user.preview).append(
 			$("<div>").addClass("vignette").append(
-				$("<img>").attr("src", user.cover).attr("alt", user.track)
+				$("<img src='"+user.cover+"' data='"+user.path+" alt='"+user.track+"'>")
 			).append(
 				$("<div>").addClass("info").append(
 					$("<img>").attr("src", "assets/images/play_button_preview.png").attr("alt", "preview").addClass("preview")
@@ -61,6 +72,12 @@
 				)
 			)
 		);
+
+        socket.on("newPlayingSong", function (data){
+        	console.log('emit received');
+            $(".bordered").toggleClass("bordered");
+            $(".vignette").find("[data='" + data + "']").toggleClass("bordered");
+        });
 
 		var nbItems = document.getElementsByClassName("item").length;
 		$("#fleche_droite").fadeIn(0);
