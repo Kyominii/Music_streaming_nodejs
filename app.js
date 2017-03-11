@@ -263,7 +263,7 @@ var actualiserMusiqueCourante = function(nom)
 var testStream = "http://voxystudio.com:25567/stream";
 setInterval(function() {
     internetradio.getStationInfo(testStream, function(error, station) {
-    var path = actualiserMusiqueCourante(station);
+    var path = actualiserMusiqueCourante(station.title);
     io.sockets.emit("newPlayingSong",path );
     });
 }, 5000);
