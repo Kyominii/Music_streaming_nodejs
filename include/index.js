@@ -270,6 +270,3 @@ holder.ondrop = function (e) {
     e.preventDefault();
     readfiles(e.dataTransfer.files);
 }
-
-var myAudio = document.getElementById("audio");
-myAudio.volume = 0.2;
