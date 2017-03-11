@@ -42,7 +42,7 @@
     socket.on('newMusic', function (user) {
     	console.log(user);
 		var html = $('<div class="vignette"><img src="'+user.cover+'" alt="'+user.track+'"><a href="'+user.preview+'">Preview</a><p>'+user.track+'</p></div>');
-        $('.owl-stage').append();
+        $('.owl-stage').append(html);
     })
 
 })();
