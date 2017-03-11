@@ -2,7 +2,7 @@ function makeDroppable(element, callback) {
 
     var input = document.getElementById('input_musique');
     input.setAttribute('type', 'file');
-    input.setAttribute('multiple', true);
+    input.setAttribute('multiple', false);
     input.style.display = 'none';
 
     element.appendChild(input);
