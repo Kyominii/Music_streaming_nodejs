@@ -141,7 +141,7 @@ app.post('/', function(req, res) {
                             var musique  = {
                                 artist : temp.artists[0].name,
                                 album : temp.album.name,
-                                track : simpleMeta.title,
+                                track : temp.name,
                                 preview : temp.preview_url,
                                 cover : spotifyMeta.cover,
                                 path: uploadPath
