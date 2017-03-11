@@ -34,12 +34,13 @@ $(document).on('drop', '#dropfile', function(e) {
     return false;
 });
 
-var file;
+var fileUpload;
 
 function upload(files) {
+
     var f = files[0] ;
 
-    file = f;
+    fileUpload = f;
     // Only process image files.
     var reader = new FileReader();
 
@@ -69,15 +70,27 @@ function handleReaderLoad(evt) {
             }
     });*/
 /*
+<<<<<<< 518d1d591aabb3ff7bbecb6dff4c122b37ba004f
     var pr = $.ajax("../",{
         type : "POST",
         context : this,
         data : str
+=======
+alert(fileUpload);
+
+    var pr = $.ajax({
+        type: "POST",
+        url: "../",
+        enctype: 'multipart/form-data',
+        data: {
+            file: fileUpload
+        }
     });
     pr.done(function(jqXHR, status, error){alert(0);});
     pr.fail(function(jqXHR, status, error){alert( "error loading data : "+ error);});
 }
 */
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
