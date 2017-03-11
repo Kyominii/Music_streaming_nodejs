@@ -75,12 +75,6 @@
 			)
 		);
 
-        socket.on("newPlayingSong", function (data){
-        	console.log('emit received');
-            $(".bordered").toggleClass("bordered");
-            $(".vignette").find("[data='" + data + "']").toggleClass("bordered");
-        });
-
 		var nbItems = document.getElementsByClassName("item").length;
 		$("#fleche_droite").fadeIn(0);
 		$("#fleche_gauche").fadeIn(0);
@@ -116,6 +110,11 @@
         $('.owl-carousel')
             .owlCarousel('add', item)
             .owlCarousel('update')
+    });
+
+    socket.on('newPlayingSong', function (data){
+        $(".bordered").toggleClass("bordered");
+        $(".vignette").find("[data='" + data + "']").toggleClass("bordered");
     });
 
 })();
