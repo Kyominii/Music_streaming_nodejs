@@ -49,8 +49,9 @@ app.get('/', function(req, res) {
         html+="<div class='item' name='"+musicUpload[i].preview+"'>"+
             "<div class='vignette'>"+
             "<img src='"+musicUpload[i].cover+"' alt='"+musicUpload[i].track+"'/>"+
-            "<div class='info'><div>"+
-            "<img src='assets/images/play_button_preview.png' alt='preview'/>"
+            "<div class='info'>"+
+            "<img src='assets/images/play_button_preview.png' alt='preview'/>"+
+            "<div>"+
             "<div>"+musicUpload[i].album+"</div>"+
             "<div>"+musicUpload[i].artist+"</div>"+
             "<div>"+musicUpload[i].track+"</div>"+

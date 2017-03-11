@@ -47,6 +47,8 @@
 				$("<img>").attr("src", user.cover).attr("alt", user.track)
 			).append(
 				$("<div>").addClass("info").append(
+					$("<img>").attr("src", "assets/images/play_button_preview.png").attr("alt", "preview")
+				).append(
 					$("<div>").append(
 						$("<div>").text(user.album)
 					).append(
@@ -57,6 +59,28 @@
 				)
 			)
 		);
+
+		var nbItems = document.getElementsByClassName("item").length;
+		$("#fleche_droite").fadeIn(0);
+		$("#fleche_gauche").fadeIn(0);
+		if($(window).width() >= 600){
+			if($(window).width() >= 100){
+				if(nbItems <= 5){
+					$("#fleche_droite").fadeOut(0);
+					$("#fleche_gauche").fadeOut(0);
+				}
+			}else{
+				if(nbItems <= 3){
+					$("#fleche_droite").fadeOut(0);
+					$("#fleche_gauche").fadeOut(0);
+				}
+			}
+		}else{
+			if(nbItems <= 1){
+				$("#fleche_droite").fadeOut(0);
+				$("#fleche_gauche").fadeOut(0);
+			}
+		}
 
 		$(item).mouseenter(function () {
 			$(item).find(".info").stop().fadeIn(200);
