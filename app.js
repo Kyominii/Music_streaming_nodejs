@@ -249,7 +249,7 @@ var actualiserMusiqueCourante = function(nom)
     for(var i=0; i<musicUpload.length;i++ )
     {
         if(musicUpload[i].path.replace(__dirname,'') === nom)
-            return musicUpload[i].path;
+            return i;
     }
 
     return null;
@@ -259,8 +259,6 @@ var testStream = "http://voxystudio.com:25567/stream";
 setInterval(function() {
     internetradio.getStationInfo(testStream, function(error, station) {
     var path = actualiserMusiqueCourante(station.title);
-    if(path!==oldPath) {
-        io.sockets.emit("newPlayingSong", path);
-    }
+    io.sockets.emit("newPlayingSong",path );
     });
 }, 5000);
