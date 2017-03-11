@@ -226,6 +226,7 @@ io.sockets.on('connection', function (socket) {
         socket.emit('loged');
         users[me.id] = me;
         io.sockets.emit('newuser' , me);
+        $("#nb_users").text("Nombre d'utilisateurs : "+(users.length+1));
     });
 
     //je me deconnecte
@@ -233,6 +234,7 @@ io.sockets.on('connection', function (socket) {
         if (!me) {return false};
         delete users[me.id];
         io.sockets.emit('discuser' , me);
+        $("#nb_users").text("Nombre d'utilisateurs : "+(users.length+1));
     });
 
 
