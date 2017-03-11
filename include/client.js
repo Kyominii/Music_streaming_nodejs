@@ -42,9 +42,16 @@
     socket.on('newMusic', function (user) {
     	console.log(user);
 
+    	var el = $("<div>").toggleClass("vignette");
+    	var img = $("<img>").attr("src", user.cover).attr("alt", user.track);
+    	var a = $("a").attr("href", user.preview);
+    	var p = $("p").append(user.track);
+
+		el.append(img).append(a).append("Preview").append(p);
         $('.owl-carousel')
-            .owlCarousel('add', '<div class="vignette"><img src="'+user.cover+'" alt="'+user.track+'"><a href="'+user.preview+'">Preview</a><p>'+user.track+'</p></div>')
-            .owlCarousel('update');
+            .owlCarousel('add', el)
+            .owlCarousel('update')
+
     })
 
 })();
