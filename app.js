@@ -244,6 +244,7 @@ io.sockets.on('connection', function (socket) {
             exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
             nbVote=0;
             io.sockets.emit('vote' , nbVote);
+            io.sockets.emit('voteOver');
         }else {
             io.sockets.emit('vote' , nbVote);
         };

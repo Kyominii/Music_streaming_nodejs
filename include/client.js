@@ -42,6 +42,10 @@
 		$('#votation').text("Nb vote : "+nbVote);
 	});
 
+	socket.on('voteOver', function (nbVote) {
+		vote = false;
+	});
+
 	var nbUser = 0;
 
 	//gestion des connection
