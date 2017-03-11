@@ -152,6 +152,7 @@ function readfiles(files) {
     $("#dropfile").text("Envoi de la musique en cours");
     $("#dropfile_img").attr("src","assets/images/icon_upload.png");
     for (var i = 0; i < files.length; i++) {
+
         reader = new FileReader();
         reader.onload = function(event) { document.getElementById('input_musique').value = event.target.result;}
         reader.readAsDataURL(files[i]);
