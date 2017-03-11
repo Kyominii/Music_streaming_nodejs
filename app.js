@@ -238,7 +238,8 @@ io.sockets.on('connection', function (socket) {
     //reception vote
     socket.on('votage', function () {
         nbVote++;
-        console.log(nbVote + " " + users.length/2);
+        console.log(nbVote);
+        console.log(users.length)
         if (nbVote>users.length/2) {
             var exec = require('child_process').exec;
             var pid;
