@@ -16,6 +16,8 @@ var spotifyApi = new SpotifyWebApi({
     redirectUri : 'http://localhost/callback'
 });
 
+io = io.listen(app.listen(2000));
+
 var musicUpload = [];
 var spotifyMeta ='';
 var simpleMeta = '';
@@ -137,6 +139,8 @@ app.post('/', function(req, res) {
                                 path: uploadPath
                             };
                             musicUpload.push(musique);
+                            io.sockets.emit('newMusic',musique);
+                            console.log('emit');
 
                             var sys = require('sys')
                             var exec = require('child_process').exec;
@@ -160,7 +164,7 @@ app.post('/', function(req, res) {
     }
 });
 
-io = io.listen(app.listen(2000));
+
 var users = {};
 var messages = [];
 var history = 20;
