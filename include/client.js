@@ -41,7 +41,7 @@
     //gestion des deconnections
     socket.on('newMusic', function (user) {
     	console.log(user);
-        $('.owl-item active').append('<img src="'+user.cover+'" alt="'+user.track+'"><a href="'+user.preview+'">Preview</a><p>'+user.track+'</p>');
+        $('.owl-stage').append('<img src="'+user.cover+'" alt="'+user.track+'"><a href="'+user.preview+'">Preview</a><p>'+user.track+'</p>');
     })
 
 })();
