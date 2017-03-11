@@ -1,96 +1,3 @@
-/*$(document).on('dragenter', '#dropfile', function() {
-    $(this).css('color', 'red');
-    return false;
-});
-
-$(document).on('dragover', '#dropfile', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).css('color', 'red');
-    return false;
-});
-
-$(document).on('dragleave', '#dropfile', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(this).css('color', 'white');
-    return false;
-});
-
-$(document).on('drop', '#dropfile', function(e) {
-    if(e.originalEvent.dataTransfer){
-        if(e.originalEvent.dataTransfer.files.length) {
-            // Stop the propagation of the event
-            e.preventDefault();
-            e.stopPropagation();
-            $(this).css('color', 'green');
-            // Main function to upload
-            upload(e.originalEvent.dataTransfer.files);
-        }
-    }
-    else {
-        $(this).css('color', 'white');
-    }
-    return false;
-});
-
-var fileUpload;
-
-function upload(files) {
-
-    var f = files[0] ;
-
-    fileUpload = f;
-    // Only process image files.
-    var reader = new FileReader();
-
-    // When the image is loaded,
-    // run handleReaderLoad function
-    reader.onload = handleReaderLoad;
-
-    // Read in the image file as a data URL.
-    reader.readAsDataURL(f);
-}
-
-function handleReaderLoad(evt) {
-    var pic = {};
-    pic.file = evt.target.result.split(',')[1];
-
-    var str = jQuery.param(pic);*/
-/*
-    $.ajax({
-        type: 'POST',
-        url: "../upload",
-        data: str,
-            success: function(data) {
-                alert("ok") ;
-            },
-            fail : function (data) {
-                alert("non") ;
-            }
-    });*/
-/*
-<<<<<<< 518d1d591aabb3ff7bbecb6dff4c122b37ba004f
-    var pr = $.ajax("../",{
-        type : "POST",
-        context : this,
-        data : str
-=======
-alert(fileUpload);
-
-    var pr = $.ajax({
-        type: "POST",
-        url: "../",
-        enctype: 'multipart/form-data',
-        data: {
-            file: fileUpload
-        }
-    });
-    pr.done(function(jqXHR, status, error){alert(0);});
-    pr.fail(function(jqXHR, status, error){alert( "error loading data : "+ error);});
-}
-*/
-
 function makeDroppable(element, callback) {
 
     var input = document.createElement('input');
@@ -163,38 +70,7 @@ function callback(files) {
         fail: function (response) {
             alert("error "+response);
         }
-    });/*
-    $.ajax({
-        // Your server script to process the upload
-        url: '../',
-        type: 'POST',
-
-        // Form data
-        data: formData,
-
-        // Tell jQuery not to process data or worry about content-type
-        // You *must* include these options!
-        cache: false,
-        contentType: false,
-        processData: false,
-
-        // Custom XMLHttpRequest
-        xhr: function() {
-            var myXhr = $.ajaxSettings.xhr();
-            if (myXhr.upload) {
-                // For handling the progress of the upload
-                myXhr.upload.addEventListener('progress', function(e) {
-                    if (e.lengthComputable) {
-                        $('progress').attr({
-                            value: e.loaded,
-                            max: e.total,
-                        });
-                    }
-                } , false);
-            }
-            return myXhr;
-        },
-    });*/
+    });
 }
 makeDroppable(element, callback);
 
@@ -258,6 +134,7 @@ $(".item").each(function (index, value) {
 });
 
 function readfiles(files) {
+    $("#dropfile").text("envoi en cours");
     for (var i = 0; i < files.length; i++) {
         reader = new FileReader();
         reader.onload = function(event) {

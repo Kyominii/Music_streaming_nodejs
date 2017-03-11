@@ -97,7 +97,6 @@ div.vignette > div > div{
 }
 
 #dropfile{
-    height: 300px;
     text-align: center;
 }
 
@@ -127,4 +126,9 @@ div.vignette > div > div{
     margin-top: 1em;
     height: 40px;
     width: 100%;
+}
+
+#upload img{
+    padding: 10px 25px 10px 25px;
+    width: 150px;
 }
