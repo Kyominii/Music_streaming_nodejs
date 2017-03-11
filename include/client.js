@@ -120,10 +120,13 @@
     socket.on('newPlayingSong', function (data){
     	console.log(data);
     	$(".vignette").removeClass("bordered");
-        var p = $(".vignette:eq("+data[0]+")").css("border", "solid red 50px");
-        if(data[0] != data[1])
+        var p = $(".vignette:eq("+data[0]+")").css("border", "solid red 5px");
+        if(data[0] != data[1]){
             $('.owl-carousel').trigger('next.owl.carousel');
-       
+            $(".vignette:eq("+data[1]+")").css("border", "solid red 0px");
+		}
+
+
     });
 
 })();
