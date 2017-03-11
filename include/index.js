@@ -5,8 +5,9 @@ function makeDroppable(element, callback) {
     input.setAttribute('multiple', true);
     input.style.display = 'none';
 
-    input.addEventListener('change', triggerCallback);
     element.appendChild(input);
+
+
 
     element.addEventListener('dragover', function(e) {
         e.preventDefault();
@@ -26,11 +27,11 @@ function makeDroppable(element, callback) {
         element.classList.remove('dragover');
         triggerCallback(e);
     });
-
+/*
     element.addEventListener('click', function() {
         input.value = null;
         input.click();
-    });
+    });*/
 
     function triggerCallback(e) {
         var files;
@@ -143,4 +144,8 @@ var holder = document.getElementById('upload');
 holder.ondrop = function (e) {
     e.preventDefault();
     readfiles(e.dataTransfer.files);
-}
+};
+holder.onchange = function (e, data) {
+    e.preventDefault();
+    readfiles(data.files);
+};
