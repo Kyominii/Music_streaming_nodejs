@@ -15,7 +15,7 @@
 		$("#login").fadeOut();
 	})
 
-	//envois de message 
+	//envois de message
 	$('#form').submit(function (event) {
 		event.preventDefault();
 		socket.emit('newmsg', {message : $('#message').val()});
@@ -37,5 +37,11 @@
 	socket.on('discuser', function (user) {
 		$('#' + user.id).remove();
 	})
+
+    //gestion des deconnections
+    socket.on('newMusic', function (user) {
+    	console.log(user);
+        $('.owl-item active').append('<img src="'+user.cover+'" alt="'+user.track+'"><a href="'+user.preview+'">Preview</a><p>'+user.track+'</p>');
+    })
 
 })();

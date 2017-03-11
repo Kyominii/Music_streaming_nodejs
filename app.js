@@ -16,6 +16,8 @@ var spotifyApi = new SpotifyWebApi({
     redirectUri : 'http://localhost/callback'
 });
 
+io = io.listen(app.listen(2000));
+
 var musicUpload = [];
 var spotifyMeta ='';
 var simpleMeta = '';
@@ -137,13 +139,14 @@ app.post('/', function(req, res) {
                                 path: uploadPath
                             };
                             musicUpload.push(musique);
+                            io.sockets.emit('newMusic',musique);
+                            console.log('emit');
 
                             var sys = require('sys')
                             var exec = require('child_process').exec;
                             var pid;
-                            function puts(error, stdout, stderr) { sys.puts(stdout); console.log(stdout); exec("kill -1 " + pid, puts3); }
-                            function puts2(error, stdout, stderr) { pid = stdout; console.log(pid); }
-                            function puts3(error, stdout, stderr) { sys.puts(stdout); console.log(stdout); }
+                            function puts2(error, stdout, stderr) { pid = stdout; console.log(pid); exec("kill -1 " + pid, puts3); console.log("kill -1 " + pid + "terminé"); }
+                            function puts3(error, stdout, stderr) { console.log(stdout); }
                             exec("find /home/hackathon/www/uploads/ -name *.mp3 > /home/hackathon/playlist.m3u", puts3);
                             exec("ps aux | grep ezstream | grep -v 'grep' | grep -o '[0-9]*' | head -n1", puts2);
                         }
@@ -160,7 +163,7 @@ app.post('/', function(req, res) {
     }
 });
 
-io = io.listen(app.listen(2000));
+
 var users = {};
 var messages = [];
 var history = 20;

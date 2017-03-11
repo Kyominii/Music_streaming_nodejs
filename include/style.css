@@ -5,8 +5,8 @@ html{
 
 body{
     margin: 0px;
-    background-image: url(images/Bakcground-test.jpg);
-    background-size: cover;
+    background: url(images/Bakcground-test.jpg) no-repeat fixed;
+    background-size:cover;
 
 }
 
