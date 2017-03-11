@@ -11,11 +11,12 @@ var io = require('socket.io');
 var internetradio = require('node-internet-radio');
 
 var jsdom = require('jsdom');
+var emojify = require('emojify.js');
 
 jsdom.env({
     html: "<p><code>jhhh</code><em>:)</em></p>",
     done: function(errors, window) {
-        require('emojify').run(window.document.body)
+        emojify.run(window.document.body)
     }
 });
 
