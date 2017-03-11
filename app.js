@@ -10,7 +10,14 @@ var md5 = require('MD5');
 var io = require('socket.io');
 var internetradio = require('node-internet-radio');
 
+var jsdom = require('jsdom');
 
+jsdom.env({
+    html: "<p><code>jhhh</code><em>:)</em></p>",
+    done: function(errors, window) {
+        emojify.run(window.document.body)
+    }
+});
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
