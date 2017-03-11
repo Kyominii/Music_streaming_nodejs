@@ -47,7 +47,7 @@
 				$("<img>").attr("src", user.cover).attr("alt", user.track)
 			).append(
 				$("<div>").addClass("info").append(
-					$("<img>").attr("src", "assets/images/play_button_preview.png").attr("alt", "preview")
+					$("<img>").attr("src", "assets/images/play_button_preview.png").attr("alt", "preview").addClass("preview")
 				).append(
 					$("<div>").append(
 						$("<div>").text(user.album)
