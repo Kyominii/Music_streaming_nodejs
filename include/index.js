@@ -133,11 +133,12 @@ $(".item").each(function (index, value) {
 
 function envoiOk(reponse) {
     $("#dropfile_img").attr("src","assets/images/icon_upload_vert.png");
+    $("#dropfile").text("La musique a bien été envoyé");
 
 }
 
 function readfiles(files) {
-    $("#dropfile").text("envoi en cours");
+    $("#dropfile").text("Envoi de la musique en cours");
     $("#dropfile_img").attr("src","assets/images/icon_upload.png");
     for (var i = 0; i < files.length; i++) {
         reader = new FileReader();
