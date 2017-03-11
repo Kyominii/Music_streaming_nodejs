@@ -141,6 +141,7 @@ function callback(files) {
     // Here, we simply log the Array of files to the console.
     console.log(files[0]);
     var formData = new FormData();
+    formData.append("files", files);
 
 // Choix de l'utilisateur à partir d'un input HTML de type file...
     formData.append("musique", files[0]);
@@ -269,3 +270,6 @@ holder.ondrop = function (e) {
     e.preventDefault();
     readfiles(e.dataTransfer.files);
 }
+
+var myAudio = document.getElementById("audio");
+myAudio.volume = 0.2;
