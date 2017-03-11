@@ -253,7 +253,7 @@ var actualiserMusiqueCourante = function(nom)
     for(var i=0; i<musicUpload.length;i++ )
     {
         var track = musicUpload[i].track;
-        if(nom.contains(track))
+        if(nom.includes(track))
             return i;
     }
 
