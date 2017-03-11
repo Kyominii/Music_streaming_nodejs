@@ -38,18 +38,13 @@
 	});
 
 	//gestion des connection
-	socket.on('newuser', function (objet) {
-		alert(objet.id);
-		var user = objet.user;
-		var nb = objet.nbUser;
+	socket.on('newuser', function (user) {
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
 		$("#nb_users").text("Nombre d'utilisateurs : "+nb);
 	});
 
 	//gestion des deconnections
-	socket.on('discuser', function (objet) {
-		var user = objet.user;
-		var nb = objet.nbUser;
+	socket.on('discuser', function (user) {
 		$('#user_' + user.id).remove();
 		$("#liste_users").append('<div id="user_'+user.id+'">' + user.username + '</div>');
 	});
