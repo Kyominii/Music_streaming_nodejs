@@ -154,6 +154,7 @@ div.vignette > div > div{
     display: none;
 }
 
+
 img.preview{
     position: absolute;
     top: 0px;
@@ -163,4 +164,8 @@ img.preview{
 
 .bordered{
     border: solid red 3px;
+}
+
+#vote {
+    color: #fff;
 }
