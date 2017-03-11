@@ -189,10 +189,12 @@
 
     #vote {
         color: black;
+        display: inline-block;
     }
 
     #votation{
         color: white;
+        display: inline-block;
     }
 
     h1 {
