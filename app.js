@@ -22,9 +22,9 @@ jsdom.env({
 
 // credentials are optional
 var spotifyApi = new SpotifyWebApi({
-    clientId : '1b25b20eb6644b7f84861a486146b68a',
-    clientSecret : '159c9817efd544059cb01b2cdc5a3a19',
-    redirectUri : 'http://localhost/callback'
+    clientId : <Client-ID>,
+    clientSecret :<Client-SECRET>,
+    redirectUri : <Client-RedirectURI>
 });
 
 fs.writeFile('/home/hackathon/playlist.m3u', '/home/hackathon/www/uploads/Audioslave - Be Yourself.mp3' + "\n", function(){
