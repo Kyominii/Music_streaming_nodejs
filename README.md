@@ -10,4 +10,4 @@ The project has following features :
 * vote system to change music
 * preview of each sound in queue
 
-We give no support on this project ;)
+We give no support on this project ;) (there is some Apache Cordova's file, don't take care of these useless files ^^)
